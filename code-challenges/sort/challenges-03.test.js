@@ -7,7 +7,7 @@ Write a function named sortBackwards that takes in an array of numbers and retur
 ------------------------------------------------------------------------------------------------ */
 
 const sortBackwards = (arr) => {
-  // Solution code here...
+  return arr.sort((a,b) => a < b);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -21,7 +21,7 @@ For example, ['Alphabet', 'Zebra', 'alphabet', 'carrot'] is correctly sorted.
 ------------------------------------------------------------------------------------------------ */
 
 const alphabetize = (arr) => {
-  // Solution code here...
+  return arr.sort();
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -31,7 +31,7 @@ Write a function named sortByLength that takes in an array of strings and return
 ------------------------------------------------------------------------------------------------ */
 
 const sortByLength = (arr) => {
-  // Solution code here...
+  return arr.sort((a,b) => a.length > b.length);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -43,7 +43,7 @@ For example, ['Alphabet', 'alphabet', 'carrot', 'Zebra'] is correctly sorted, an
 ------------------------------------------------------------------------------------------------ */
 
 const alphabetizeBetter = (arr) => {
-  // Solution code here...
+  return arr.sort((a,b) => a.toLowerCase() > b.toLowerCase());
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -60,7 +60,7 @@ Here is an example of the input:
 ------------------------------------------------------------------------------------------------ */
 
 const sortByPrice = (arr) => {
-  // Solution code here...
+  return arr.sort((a,b) => a.price > b.price);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -72,7 +72,7 @@ For example, [1, 14, 0.2, -281, 54782] is only correctly sorted in that order.
 ------------------------------------------------------------------------------------------------ */
 
 const sortNumbersByLength = (arr) => {
-  // Solution code here...
+  return arr.sort((a,b) => a.toString().length > b.toString().length);
 };
 
 /*-----------------------------------------------------------------------------------------------
@@ -94,7 +94,7 @@ const people = [
 ];
 
 const sortPeople = (arr) => {
-  // Solution code here...
+  return arr.sort((a,b) => a.lastName > b.lastName);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -108,7 +108,17 @@ If two people have the same full name, the younger one should come first. Do not
 ------------------------------------------------------------------------------------------------ */
 
 const sortPeopleBetter = (arr) => {
-  // Solution code here...
+  return arr.sort((a,b) => { 
+    if (a.lastName === b.lastName) { 
+      if (a.firstName === b. firstName) { 
+        return a.age > b.age;
+      } else { 
+        return a.firstName > b.firstName;
+      }
+    } else { 
+      return a.lastName > b.lastName;
+    }
+  })
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -134,7 +144,8 @@ const meetings = [
 ];
 
 const sortMeetingsByDay = (arr) => {
-  // Solution code here...
+  const daysOrderedArray = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+  return arr.sort((a,b) => daysOrderedArray.indexOf(a.dayOfWeek) > daysOrderedArray.indexOf(b.dayOfWeek));
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -148,8 +159,19 @@ You DO NOT need to use your solution to Challenge 9 in completing Challenge 10.
 ------------------------------------------------------------------------------------------------ */
 
 const sortSchedule = (arr) => {
-  // Solution code here...
-};
+  const daysOrderedArray = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+  return arr.sort((a,b) => {
+    if (daysOrderedArray.indexOf(a.dayOfWeek) === daysOrderedArray.indexOf(b.dayOfWeek)) {
+      if (a.start === b.start) { 
+        return a.end > b.end;
+      } else { 
+        return a.start > b.start;
+      }
+    } else {
+      return daysOrderedArray.indexOf(a.dayOfWeek) > daysOrderedArray.indexOf(b.dayOfWeek);
+    }
+  });
+}
 
 /* ------------------------------------------------------------------------------------------------
 TESTS
