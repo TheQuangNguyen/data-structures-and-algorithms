@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage --verbose code-challenges/value-vs-reference/",
+    "test": "jest --coverage --verbose code-challenges/sort/",
     "watch": "jest --watchAll"
   },
   "keywords": [],
