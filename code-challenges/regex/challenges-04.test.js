@@ -26,8 +26,12 @@ Return an array containing all the matches.
 ------------------------------------------------------------------------------------------------ */
 
 const isCapitalized = (str) => {
-  const regex = /[A-Z][a-z]*/gm;
-  return str.match(regex);
+  const regex = /[A-Z][a-z]*/g;
+  if (str.match(regex)) { 
+    return str.match(regex);
+  } else { 
+    return [];
+  }
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -37,7 +41,14 @@ Write a function named citiesAtoJ that takes in an array of city names and uses 
 ------------------------------------------------------------------------------------------------ */
 
 const citiesAtoJ = (arr) => {
-  // Solution code here...
+  const regex = /^[A-J]/;
+  const array = [];
+  arr.forEach(city => { 
+    if(regex.test(city)) { 
+      array.push(city);
+    }
+  })
+  return array;
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -53,7 +64,8 @@ Do not use the vertical bar (pipe) in your pattern.
 ------------------------------------------------------------------------------------------------ */
 
 const matchMonth = (input) => {
-  // Solution code here...
+  const regex = /^[Oo]ct(ober)?$/g;
+  return regex.test(input);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -67,7 +79,8 @@ The expected output of "Hello, and have a wonderful day!" is ["and ", "have ", "
 ------------------------------------------------------------------------------------------------ */
 
 const noPunctuation = str => {
-  // Solution code here...
+  const regex = /\w+\s/gi;
+  return str.match(regex);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -83,7 +96,8 @@ For example, 'Welcome to Code 301!' will return 'W_lc_m_ t_ C_d_ 301!'.
 ------------------------------------------------------------------------------------------------ */
 
 let hangman = (str) => {
-  // Solution code here...
+  const regex = /[aeiou]/gi;
+  return str.replace(regex, '_');
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -99,7 +113,8 @@ Hint: All of these words end with the letters "ells".
 const seashells = 'She sells seashells by the seashore. The shells she sells are surely seashells. So if she sells shells on the seashore, I\'m sure she sells seashore shells.';
 
 const findShells = (str) => {
-  // Solution code here...
+  const regex = /s[eash]*(ells)/gi;
+  return str.match(regex);
 };
 
 /* ------------------------------------------------------------------------------------------------
