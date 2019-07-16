@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage --verbose code-challenges/split-join-slice-splice/",
+    "test": "jest --coverage --verbose code-challenges/Object-methods/",
     "watch": "jest --watchAll"
   },
   "keywords": [],
