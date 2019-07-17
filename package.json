@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage --verbose code-challenges/Object-methods/",
+    "test": "jest --coverage --verbose code-challenges/map/",
     "watch": "jest --watchAll"
   },
   "keywords": [],
