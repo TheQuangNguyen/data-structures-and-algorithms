@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage --verbose code-challenges/filter/",
+    "test": "jest --coverage --verbose code-challenges/reduce/",
     "watch": "jest --watchAll"
   },
   "keywords": [],
