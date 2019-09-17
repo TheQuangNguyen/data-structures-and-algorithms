@@ -18,3 +18,4 @@ Another way would be to have two pointers that reference the first and last inde
 
 #### Solution 
 
+![alt text](/assets/array-reverse.png)
