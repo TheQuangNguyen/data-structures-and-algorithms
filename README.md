@@ -62,6 +62,6 @@ The time complexity of binary search is O(log(n)) because we cut in half each ti
 
 #### Solution 
 
-[Binary Search Code Solution]
+[Binary Search Code Solution](https://github.com/TheQuangNguyen/data-structures-and-algorithms/blob/master/code401challenges/src/main/java/code401challenges/BinarySearch.java)
 
 ![alt text](/assets/binary-search.png)
