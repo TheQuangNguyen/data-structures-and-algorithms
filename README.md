@@ -6,6 +6,7 @@ This repo contains common algorithms problems and my solutions to those problems
 
 1. [Reverse an Array](#reverse-an-array)
 2. [Array Insert and Shift](#array-insert-and-shift)
+3. [Binary Search](#binary-search)
 
 ### Reverse an Array
 
@@ -24,9 +25,6 @@ Another way would be to have two pointers that reference the first and last inde
 [Reverse Array Code Solution](https://github.com/TheQuangNguyen/data-structures-and-algorithms/blob/master/code401challenges/src/main/java/code401challenges/ArrayReverse.java)
 
 ![alt text](/assets/array-reverse.png)
-
-
-
 
 ### Array Insert and Shift
 
@@ -47,3 +45,23 @@ For the removal, it is very similar to the insertion with a few lines different.
 [Array Shift Code Solution](https://github.com/TheQuangNguyen/data-structures-and-algorithms/blob/master/code401challenges/src/main/java/code401challenges/ArrayShift.java)
 
 ![alt text](/assets/array-shift.png)
+
+### Binary Search
+
+#### Problem Statement
+
+Write a function called BinarySearch which takes in 2 parameters: a sorted array and the search key. Without utilizing any of the built-in methods available to your language, return the index of the array’s element that is equal to the search key, or -1 if the element does not exist.
+
+#### Approach & Efficiency
+
+Binary Search is an algorithm that used to search for a certain element within a sorted array. The main aspect of binary search is that we cut in half the section of the array that we are conducting the search to help significantly sorten the amount of compares that we have to do as opposed to a linear search. To do a binary search, we needs to define our lower and upper bounds which represent where we going to do our search within. In the very beginning, our lower bound would be the zeroth index and upper bound would be the array length minus one. Then we would calculate our mid index between the two bounds by taking the average between them. Using this mid index, we would then check if the element at the mid index is equal to the key that we are trying to search. If it is great we would just return the mid index. If not, then we would check if the key is either greater than or less than the element at the mid index. If greater than, move the lower bound to be mid + 1 and if less than, move the upper bound to be mid - 1. We do this because since we know that this array is sorted, if the key is greater than the mid element, we know that it cannot possibly be to the left of the mid so we effectively get rids of the left half and move our bounds so that we are now only searching at the right half and vice versa. We keep doing this until we either find the key in which we would return the mid index at that point, or if we exhausted our search in which we return -1. 
+
+Binary search can be coded with a while loop or with recursion. Both methods are shown in the solution. 
+
+The time complexity of binary search is O(log(n)) because we cut in half each time the amount of things that we need to search. Space complexity would be O(1).
+
+#### Solution 
+
+[Binary Search Code Solution]
+
+![alt text](/assets/binary-search.png)
