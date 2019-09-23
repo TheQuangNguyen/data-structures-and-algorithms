@@ -86,6 +86,7 @@ The approach would be to have two classes, one for defining a node and another d
 ### API
 
 [Code implementation of singly linked list](https://github.com/TheQuangNguyen/data-structures-and-algorithms/blob/master/Data-Structures/src/main/java/linkedList/LinkedList.java)
+
 [Code implementation of doubly linked list](https://github.com/TheQuangNguyen/data-structures-and-algorithms/blob/master/Data-Structures/src/main/java/doublyLinkedList/DoublyLinkedList.java)
 
 **insert()**: Takes in a value and appends it to the front of the linked list.
