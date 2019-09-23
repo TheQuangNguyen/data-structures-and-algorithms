@@ -45,7 +45,4 @@ public class LinkedList {
 
         return result.toString();
     }
-
-
-
 }
