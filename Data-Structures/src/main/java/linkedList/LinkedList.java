@@ -1,4 +1,4 @@
-package Data.Structures.linkedList;
+package linkedList;
 
 public class LinkedList {
     public Node head = null;
@@ -36,10 +36,11 @@ public class LinkedList {
         StringBuilder result = new StringBuilder();
         if (head != null) {
             result.append(head.value);
+            currentNode = currentNode.next;
         }
         while (currentNode != null) {
-            currentNode = currentNode.next;
             result.append(String.format(", %s", currentNode.value));
+            currentNode = currentNode.next;
         }
 
         return result.toString();

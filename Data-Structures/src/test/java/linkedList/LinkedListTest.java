@@ -1,4 +1,4 @@
-package Data.Structures.linkedList;
+package linkedList;
 
 import org.junit.Test;
 
@@ -35,13 +35,13 @@ public class LinkedListTest {
         test.insert(3);
         Node currentNode = test.head;
 
-        assertEquals(5, currentNode.value);
-        currentNode = currentNode.next;
-        assertEquals(7, currentNode.value);
+        assertEquals(3, currentNode.value);
         currentNode = currentNode.next;
         assertEquals(9, currentNode.value);
         currentNode = currentNode.next;
-        assertEquals(3, currentNode.value);
+        assertEquals(7, currentNode.value);
+        currentNode = currentNode.next;
+        assertEquals(5, currentNode.value);
         currentNode = currentNode.next;
     }
 
@@ -79,7 +79,7 @@ public class LinkedListTest {
         test.insert(9);
         test.insert(3);
 
-        assertEquals("5, 7, 9, 3", test.toString());
+        assertEquals("3, 9, 7, 5", test.toString());
     }
 
     // Test toString for when linked list only have one node
