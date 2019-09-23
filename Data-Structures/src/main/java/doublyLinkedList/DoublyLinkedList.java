@@ -1,10 +1,11 @@
-package linkedList;
+package doublyLinkedList;
 
-public class LinkedList {
+public class DoublyLinkedList {
     public Node head = null;
+    public Node tail = null;
 
     // Constructor for linked list that initialize it as an empty list
-    public LinkedList() {
+    public DoublyLinkedList() {
     }
 
     // Define a method called insert which takes any value as an argument
@@ -13,6 +14,12 @@ public class LinkedList {
         Node oldNode = head;
         head = new Node(value);
         head.next = oldNode;
+
+        if (oldNode != null) {
+            oldNode.prev = head;
+        } else {
+            tail = head;
+        }
     }
 
     // Define a method called includes which takes any value as an argument
@@ -29,18 +36,19 @@ public class LinkedList {
     }
 
     // Define a method called toString which takes in no arguments
-    // and returns a string representing all the values in the Linked List.
+    // and returns a string representing all the values in the Linked List
+    // from back of the list to the front
     @Override
     public String toString() {
-        Node currentNode = head;
+        Node currentNode = tail;
         StringBuilder result = new StringBuilder();
-        if (head != null) {
-            result.append(head.value);
-            currentNode = currentNode.next;
+        if (tail != null) {
+            result.append(tail.value);
+            currentNode = currentNode.prev;
         }
         while (currentNode != null) {
             result.append(String.format(", %s", currentNode.value));
-            currentNode = currentNode.next;
+            currentNode = currentNode.prev;
         }
 
         return result.toString();

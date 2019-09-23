@@ -7,6 +7,7 @@ This repo contains common algorithms problems and my solutions to those problems
 1. [Reverse an Array](#reverse-an-array)
 2. [Array Insert and Shift](#array-insert-and-shift)
 3. [Binary Search](#binary-search)
+4. [Linked List Implementation](#linked-list-implementation)
 
 ### Reverse an Array
 
@@ -65,3 +66,25 @@ The time complexity of binary search is O(log(n)) because we cut in half each ti
 [Binary Search Code Solution](https://github.com/TheQuangNguyen/data-structures-and-algorithms/blob/master/code401challenges/src/main/java/code401challenges/BinarySearch.java)
 
 ![alt text](/assets/binary-search.png)
+
+### Linked List Implementation
+This is my own implementation of a singly and doubly linked list. Singly linked list is when each node has the location of the next node in the list. The linked list itself only has information on where the head is. Doubly linked list is when each node has the location of the next node and also the previous node. The linked list itself has information on both the head of the list as well as the tail. 
+
+## Challenge
+The implementation of the linked list needs to have the following:
+* Define a method called **insert** which takes any value as an argument and adds a new node with that value to the head of the list with an O(1) Time performance.
+* Define a method called **includes** which takes any value as an argument and returns a boolean result depending on whether that value exists as a Node’s value somewhere within the list.
+* Define a method called **toString** which takes in no arguments and returns a string representing all the values in the Linked List.
+
+## Approach & Efficiency
+The approach would be to have two classes, one for defining a node and another defining a linked list. The node class is simple, it just needs two variables for singly linked list. It needs a variable for the value that it holds and a pointer to the next node. For the linked list class, when we instantiate it, the head would be equal to null. When we do an insertion, we would insert a new node to the beginnning of the list and so we would first create a new node, have the new node points to the old node and change the head to the new node. For searching, we would just start at the head and go through each node to see if the value that each node contains matches the value that we are looking for. The toString method is very similar in which we would go through all the nodes and just append the values onto a string that we return in the end. 
+
+**Insert** method would take O(1) time and O(1) space
+**Includes** method would take O(n) time and O(1) space
+**toString** method would take O(n) time and O(n) space
+
+## API
+
+**insert()**: Takes in a value and appends it to the front of the linked list.
+**includes()**: Takes in a value and search if that values exist within the linked list. 
+**toString()**: Takes in no parameters and return a single string that contains the values of each node in the linked list separated by commas. 
