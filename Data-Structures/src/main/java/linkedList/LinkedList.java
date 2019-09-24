@@ -117,6 +117,28 @@ public class LinkedList<T> {
         }
     }
 
+    // remove the first node with the given value
+    // return true or false depends on if the value exist or not in the list
+    public boolean remove(T value) {
+        Node currentNode = head;
 
+        if (currentNode == null) {
+            return false;
+        } else if (currentNode.value == value) {
+            head = currentNode.next;
+            return true;
+        }
+
+        while (currentNode.next != null && currentNode.next.value != value) {
+            currentNode = currentNode.next;
+        }
+
+        if (currentNode.next == null) {
+            return false;
+        } else {
+            currentNode.next = currentNode.next.next;
+            return true;
+        }
+    }
 
 }
