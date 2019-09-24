@@ -281,4 +281,78 @@ public class LinkedListTest {
         assertFalse("Testing for if the value of 10 does not exist in the list, should return false",
             test.insertAfter(10, 5));
     }
+
+    // Testing for removing a node in the middle of the list
+    @Test
+    public void testRemoveMiddleOfList() {
+        test.insert(50);
+        test.insert(40);
+        test.insert(30);
+        test.insert(20);
+        test.insert(10);
+        test.remove(30);
+
+        Node currentNode = test.head;
+
+        assertEquals(40, currentNode.next.next.value);
+    }
+
+    // Testing for removing a node at the beginning of the list
+    @Test
+    public void testRemoveBeginningOfList() {
+        test.insert(50);
+        test.insert(40);
+        test.insert(30);
+        test.insert(20);
+        test.insert(10);
+        test.remove(10);
+
+        Node currentNode = test.head;
+
+        assertEquals(20, currentNode.value);
+    }
+
+    // Testing for removing a node at the end of the list
+    @Test
+    public void testRemoveEndOfList() {
+        test.insert(50);
+        test.insert(40);
+        test.insert(30);
+        test.insert(20);
+        test.insert(10);
+        test.remove(50);
+
+        Node currentNode = test.head;
+
+        // The thing after 40 should be null;
+        assertNull(currentNode.next.next.next.next);
+    }
+
+    // Testing for removing a node when there are duplicates in the list
+    @Test
+    public void testRemoveDuplicatesInList() {
+        test.insert(50);
+        test.insert(40);
+        test.insert(20);
+        test.insert(20);
+        test.insert(10);
+        test.remove(20);
+
+        Node currentNode = test.head;
+
+        assertEquals(40, currentNode.next.next.value);
+        assertEquals(20, currentNode.next.value);
+    }
+
+    // Testing for removing a node when it does not exist in the list
+    @Test
+    public void testRemoveNotExistInList() {
+        test.insert(50);
+        test.insert(40);
+        test.insert(20);
+        test.insert(20);
+        test.insert(10);
+
+        assertFalse(test.remove(60));
+    }
 }
