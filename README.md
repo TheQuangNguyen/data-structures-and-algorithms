@@ -8,6 +8,7 @@ This repo contains common algorithms problems and my solutions to those problems
 2. [Array Insert and Shift](#array-insert-and-shift)
 3. [Binary Search](#binary-search)
 4. [Linked List Implementation](#linked-list-implementation)
+5. [Linked List Insertion](#linked-list-insertion)
 
 ## Reverse an Array
 
@@ -92,3 +93,42 @@ The approach would be to have two classes, one for defining a node and another d
 **insert()**: Takes in a value and appends it to the front of the linked list.
 **includes()**: Takes in a value and search if that values exist within the linked list. 
 **toString()**: Takes in no parameters and return a single string that contains the values of each node in the linked list separated by commas. 
+
+## Linked List Insertion
+
+### Problem Statement
+
+Write the following methods for the Linked List class:
+* **.append(value):** adds a new node with the given value to the end of the list
+* **.insertBefore(value, newVal):** add a new node with the given newVal immediately before the first value node
+* **.insertAfter(value, newVal):** add a new node with the given newValue immediately after the first value node
+
+### Approach & Efficiency
+
+#### Append
+
+Start with the head node and use a while loop to iterate through the list to find the last node on the list. For each iteration of the loop, checks to see if the next node is null or not. If not, then make the current node be equal to the next node. When current node is the last node, the while loop will exits and afterward make a new node with the given value and next be equals to null. Then have the current node points to the new node since the new node is the new last node of the list. 
+
+Time complexity is O(n) since we have to go through every node to get to the last node. Space complexity is O(1) since we only needed to provide memory for the new node. 
+
+#### Insert Before 
+
+Start with the head node and use a while loop to iterate through the list to see if the next node is equal to the given value. If it is, then the current node would be the node before the node that contains the given value. Create a new node with the given value and have new node points to the next node of the current node. Then have the current node's next points to the new node. 
+
+There is a special case in which the very first node contains the value and so we need to put the new node before the first node and make the new node be the head of the list. To do this, we would have an if statement that checks if the head of the list equal to the value before the while loop. If it is, then make the new node with the given value and points to the old head node. Afterward, make the head of the linked list be the new node. 
+
+The time complexity of binary search is O(log(n)) because we cut in half each time the amount of things that we need to search. Space complexity would be O(1).
+
+Time complexity is O(n) because the worst case is that the value we looking for can be at the end of the list. Space complexity is O(1) because we only need to create a new node. 
+
+#### Insert After
+
+Insert After is almost the same to insert before with the exception that we are not stopping at the node before the node that contains the value but we are stopping at the node that contains the value. This means that for the while loop, we would check if the current node value is equal to the value we looking for, not the next node's value. Everything else is basically the same in regard to the insertion logic. 
+
+Time comlexity is O(n) because worst case we have to search until the last node at the end of the list. Space complexity is o(1) for the same reason above. 
+
+### Solution 
+
+[Linked List Insertion Code Solution]()
+
+![alt text](/assets/linked-list-insertion.png)
