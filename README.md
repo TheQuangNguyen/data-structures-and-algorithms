@@ -117,8 +117,6 @@ Start with the head node and use a while loop to iterate through the list to see
 
 There is a special case in which the very first node contains the value and so we need to put the new node before the first node and make the new node be the head of the list. To do this, we would have an if statement that checks if the head of the list equal to the value before the while loop. If it is, then make the new node with the given value and points to the old head node. Afterward, make the head of the linked list be the new node. 
 
-The time complexity of binary search is O(log(n)) because we cut in half each time the amount of things that we need to search. Space complexity would be O(1).
-
 Time complexity is O(n) because the worst case is that the value we looking for can be at the end of the list. Space complexity is O(1) because we only need to create a new node. 
 
 #### Insert After
