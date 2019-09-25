@@ -370,18 +370,75 @@ public class LinkedListTest {
         test.insert(10);
         int result = test.getKthNodeFromTheEnd(2);
 
-        assertEquals(50, result);
+        assertEquals(40, result);
     }
 
-    // Testing for when the k value is greater than the length of the list
+    // Testing for when the k value is greater than the length of the list. Return a null pointer exception
+    @Test(expected = NullPointerException.class)
+    public void testGetKthNodeFromEndOfListKGreaterThanLength() {
+        test.insert(60);
+        test.insert(50);
+        test.insert(40);
+        test.insert(30);
+        test.insert(20);
+        test.insert(10);
+        int result = test.getKthNodeFromTheEnd(10);
+    }
 
-    // Testing for when the k value is negative number
+    // Testing for when the k value is negative number. This is outside of acceptable range for the
+    // parameter so return illegal argument exception
+    @Test(expected = IllegalArgumentException.class)
+    public void testGetKthNodeFromEndOfListNegative() {
+        test.insert(60);
+        test.insert(50);
+        test.insert(40);
+        test.insert(30);
+        test.insert(20);
+        test.insert(10);
+        int result = test.getKthNodeFromTheEnd(-2);
+    }
 
-    // Testing for when the list is empty
+    // Testing for when the list is empty. Should return null pointer exception since there is no node in the list and head points
+    // to null
+    @Test(expected = NullPointerException.class)
+    public void testGetKthNodeFromEndOfListEmpty() {
 
-    // Testing for when k is equal to the list length
+        int result = test.getKthNodeFromTheEnd(0);
+    }
+
+    // Testing for when k is equal to the list length. This means that k is outside of the list range so
+    // return an null pointer exception
+    @Test(expected = NullPointerException.class)
+    public void testGetKthNodeFromEndOfListKEqualLength() {
+        test.insert(60);
+        test.insert(50);
+        test.insert(40);
+        test.insert(30);
+        test.insert(20);
+        test.insert(10);
+        int result = test.getKthNodeFromTheEnd(6);
+    }
 
     // Testing for when k is 0. It should returns the element at the end of list
+    @Test
+    public void testGetKthNodeFromEndOfListKZero() {
+        test.insert(60);
+        test.insert(50);
+        test.insert(40);
+        test.insert(30);
+        test.insert(20);
+        test.insert(10);
+        int result = test.getKthNodeFromTheEnd(0);
 
-    // Testing for when the list is of size 1
+        assertEquals(60, result);
+    }
+
+    // Testing for when the list is of size 1. Should return the only value in the list
+    @Test
+    public void testGetKthNodeFromEndOfListSizeOfOne() {
+        test.insert(60);
+        int result = test.getKthNodeFromTheEnd(0);
+
+        assertEquals(60, result);
+    }
 }

@@ -149,11 +149,22 @@ public class LinkedList<T> {
         Node currentNode = head;
         Node scoutNode = head;
 
-        for (int i = 0; i < k; i++) {
-            scoutNode = scoutNode.next;
+        // checking for if k is negative
+        if (k < 0) {
+            throw new IllegalArgumentException("k have to be greater than or equal to 0 and less than length of linked list");
         }
 
-        while (scoutNode != null) {
+        // catch null pointer exception when k is greater than or equal to length of linked list and display the custom message
+        for (int i = 0; i < k; i++) {
+            try {
+                scoutNode = scoutNode.next;
+            } catch (NullPointerException e) {
+                throw new NullPointerException("k have to be greater than or equal to 0 and less than length of linked list");
+            }
+
+        }
+
+        while (scoutNode.next != null) {
             scoutNode = scoutNode.next;
             currentNode = currentNode.next;
         }
