@@ -141,4 +141,34 @@ public class LinkedList<T> {
         }
     }
 
+    // Write a method for the Linked List class which takes a number, k, as a parameter.
+    // Return the node’s value that is k from the end of the linked list.
+    // You have access to the Node class and all the properties on the Linked List class
+    // as well as the methods created in previous challenges.
+    public T getKthNodeFromTheEnd(int k) {
+        Node currentNode = head;
+        Node scoutNode = head;
+
+        // checking for if k is negative
+        if (k < 0) {
+            throw new IllegalArgumentException("k have to be greater than or equal to 0 and less than length of linked list");
+        }
+
+        // catch null pointer exception when k is greater than or equal to length of linked list and display the custom message
+        for (int i = 0; i < k; i++) {
+            try {
+                scoutNode = scoutNode.next;
+            } catch (NullPointerException e) {
+                throw new NullPointerException("k have to be greater than or equal to 0 and less than length of linked list");
+            }
+
+        }
+
+        while (scoutNode.next != null) {
+            scoutNode = scoutNode.next;
+            currentNode = currentNode.next;
+        }
+
+        return (T) currentNode.value;
+    }
 }

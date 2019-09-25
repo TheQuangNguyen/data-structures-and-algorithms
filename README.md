@@ -9,6 +9,7 @@ This repo contains common algorithms problems and my solutions to those problems
 3. [Binary Search](#binary-search)
 4. [Linked List Implementation](#linked-list-implementation)
 5. [Linked List Insertion](#linked-list-insertion)
+6. [Get Kth Value From End Of Linked List](#get-kth-value-from-end-of-linked-list)
 
 ## Reverse an Array
 
@@ -127,6 +128,27 @@ Time comlexity is O(n) because worst case we have to search until the last node 
 
 ### Solution 
 
-[Linked List Insertion Code Solution]()
+[Linked List Insertion Code Solution](https://github.com/TheQuangNguyen/data-structures-and-algorithms/blob/master/Data-Structures/src/main/java/linkedList/LinkedList.java)
 
 ![alt text](/assets/linked-list-insertion.png)
+
+## Get Kth Value From End Of Linked List
+
+### Problem Statement 
+
+Write a method for the Linked List class which takes a number, k, as a parameter. Return the node’s value that is k from the end of the linked list. You have access to the Node class and all the properties on the Linked List class as well as the methods created in previous challenges.
+
+### Approach & Efficiency 
+
+Have two pointers at the head and move the first pointer k position away from the head. Then move both pointers along the linked list one node at a time until the first pointer get to the last node on the list before null using a while loop. Since the first and second pointers are k apart away, the second pointer is at the node kth away from the end of list. 
+
+The time complexity of this algorithm should be O(n) since in the worst case, both pointer traverse through the entire list to the end of the list for the case of k = 0. Space complexity would be just O(1) since we only need to create two pointers.
+
+### Solution 
+
+[Linked List Get Kth Value From The End Solution](https://github.com/TheQuangNguyen/data-structures-and-algorithms/blob/master/Data-Structures/src/main/java/linkedList/LinkedList.java)
+
+![alt text](/assets/linked-list-get-kth-from-end.png)
+
+
+
