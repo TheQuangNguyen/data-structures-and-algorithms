@@ -355,4 +355,33 @@ public class LinkedListTest {
 
         assertFalse(test.remove(60));
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////
+
+    // Testing for a normal case when there are multiple nodes and we remove one around the middle
+    // from the end of the list
+    @Test
+    public void testGetKthNodeFromEndOfListMultipleNodes() {
+        test.insert(60);
+        test.insert(50);
+        test.insert(40);
+        test.insert(30);
+        test.insert(20);
+        test.insert(10);
+        int result = test.getKthNodeFromTheEnd(2);
+
+        assertEquals(50, result);
+    }
+
+    // Testing for when the k value is greater than the length of the list
+
+    // Testing for when the k value is negative number
+
+    // Testing for when the list is empty
+
+    // Testing for when k is equal to the list length
+
+    // Testing for when k is 0. It should returns the element at the end of list
+
+    // Testing for when the list is of size 1
 }
