@@ -171,4 +171,47 @@ public class LinkedList<T> {
 
         return (T) currentNode.value;
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////
+
+    // Write a function called mergeLists which takes two linked lists as arguments.
+    // Zip the two linked lists together into one so that the nodes alternate between the two lists
+    // and return a reference to the head of the zipped list. Try and keep additional space down to O(1).
+    // You have access to the Node class and all the properties on the Linked List class
+    // as well as the methods created in previous challenges.
+    public Node mergeLists(LinkedList linkedList1, LinkedList linkedList2) {
+        Node currentNode1 = linkedList1.head;
+        Node currentNode2 = linkedList2.head;
+        Node nextNode1;
+        Node nextNode2;
+
+        // check if both lists are empty, if they are return null for the head node
+        // check if one of the list is empty, if it is, just return the head of the other one
+        if (currentNode1 == null && currentNode2 == null) {
+            return null;
+        } else if (currentNode1 == null) {
+            return currentNode2;
+        } else if (currentNode2 == null) {
+            return currentNode1;
+        }
+
+        while (currentNode1.next != null && currentNode2.next != null) {
+            nextNode1 = currentNode1.next;
+            currentNode1.next = currentNode2;
+            nextNode2 = currentNode2.next;
+            currentNode2.next = nextNode1;
+            currentNode1 = nextNode1;
+            currentNode2 = nextNode2;
+        }
+
+        // connect the last nodes between the two lists depend on if the first or the second list is longer
+        if (currentNode1.next == null) {
+            currentNode1.next = currentNode2;
+        } else if (currentNode2.next == null) {
+            nextNode1 = currentNode1.next;
+            currentNode1.next = currentNode2;
+            currentNode2.next = nextNode1;
+        }
+        return linkedList1.head;
+    }
 }

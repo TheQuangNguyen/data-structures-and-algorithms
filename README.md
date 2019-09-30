@@ -10,7 +10,9 @@ This repo contains common algorithms problems and my solutions to those problems
 4. [Linked List Implementation](#linked-list-implementation)
 5. [Linked List Insertion](#linked-list-insertion)
 6. [Get Kth Value From End Of Linked List](#get-kth-value-from-end-of-linked-list)
-7. [Stacks and Queues Implementation](#stacks-and-queues-implementation)
+7. [Merge Two Linked Lists](#merge-two-linked-lists)
+8. [Stacks and Queues Implementation](#stacks-and-queues-implementation)
+
 
 ## Reverse an Array
 
@@ -150,6 +152,24 @@ The time complexity of this algorithm should be O(n) since in the worst case, bo
 [Linked List Get Kth Value From The End Solution](https://github.com/TheQuangNguyen/data-structures-and-algorithms/blob/master/Data-Structures/src/main/java/linkedList/LinkedList.java)
 
 ![alt text](/assets/linked-list-get-kth-from-end.png)
+
+## Merge Two Linked Lists
+
+### Problem Statement
+
+Write a function called mergeLists which takes two linked lists as arguments. Zip the two linked lists together into one so that the nodes alternate between the two lists and return a reference to the head of the zipped list. Try and keep additional space down to O(1). You have access to the Node class and all the properties on the Linked List class as well as the methods created in previous challenges.
+
+### Approach & Efficiency
+
+First create variables that will each store the current nodes for both linked lists as well as the next nodes for the current nodes. Then with a while loop, go through the first linked list and set the currentNode1.next to be currentNode2. Afterward set currentNode2.next be equals to nextNode1. Then set both currentNode1 and currentNode2 to be nextNode1 and nextNode2. Then repeat the process until either currentNode1.next or currentNode2.next is equal to null. Afterward, checks if currentNode1.next is null. If it is, then set currentNode1.next to currentNode2. Otherwise, set currentNode1.next to currentNode2 and currenNode2.next to nextNode1. 
+
+Time complexity of this is O(n) since we traverse through the entire linked list that is shorter.
+Space complexity would be O(1) since we only need four variables to keep track of our current nodes and next nodes. 
+
+### Solution 
+[Merging Two Linked Lists Solution](https://github.com/TheQuangNguyen/data-structures-and-algorithms/blob/master/Data-Structures/src/main/java/linkedList/LinkedList.java)
+
+![alt text](/assets/merging-linked-list.png)
 
 ## Stacks and Queues Implementation
 This is my own implementation of the stack and queue data structures. Stacks and queues are very similar to linked list but what's different is how we interact with the content of each data structure. 

@@ -441,4 +441,254 @@ public class LinkedListTest {
 
         assertEquals(60, result);
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////
+
+    // Testing for normal case where both linked list is the same size to see if they can be zipped properly
+    @Test
+    public void testMergeListsSameLengthForBoth() {
+        LinkedList<Integer> test2 = new LinkedList<>();
+
+        // First Linked List: head -> 1 -> 2 -> 3 -> null
+        test.insert(3);
+        test.insert(2);
+        test.insert(1);
+
+        // Second Linked List: head -> 11 -> 12 -> 13 -> null
+        test2.insert(13);
+        test2.insert(12);
+        test2.insert(11);
+
+        // merge list should be head -> 1 -> 11 -> 2 -> 12 -> 3 -> 13 -> null
+        Node mergedList = test.mergeLists(test, test2);
+
+        // Testing for values of every nodes to see if it match the expected
+        assertEquals(1, mergedList.value);
+        mergedList = mergedList.next;
+        assertEquals(11, mergedList.value);
+        mergedList = mergedList.next;
+        assertEquals(2, mergedList.value);
+        mergedList = mergedList.next;
+        assertEquals(12, mergedList.value);
+        mergedList = mergedList.next;
+        assertEquals(3, mergedList.value);
+        mergedList = mergedList.next;
+        assertEquals(13, mergedList.value);
+    }
+
+    // Testing when first linked list is one node less than the other
+    @Test
+    public void testMergeListsFirstListIsLongerByOne() {
+        LinkedList<Integer> test2 = new LinkedList<>();
+
+        // First Linked List: head -> 1 -> 2 -> 3 -> 4 -> null
+        test.insert(4);
+        test.insert(3);
+        test.insert(2);
+        test.insert(1);
+
+        // Second Linked List: head -> 11 -> 12 -> 13 -> null
+        test2.insert(13);
+        test2.insert(12);
+        test2.insert(11);
+
+        // merge list should be head -> 1 -> 11 -> 2 -> 12 -> 3 -> 13 -> 4 -> null
+        Node mergedList = test.mergeLists(test, test2);
+
+        // Testing for values of every nodes to see if it match the expected
+        assertEquals(1, mergedList.value);
+        mergedList = mergedList.next;
+        assertEquals(11, mergedList.value);
+        mergedList = mergedList.next;
+        assertEquals(2, mergedList.value);
+        mergedList = mergedList.next;
+        assertEquals(12, mergedList.value);
+        mergedList = mergedList.next;
+        assertEquals(3, mergedList.value);
+        mergedList = mergedList.next;
+        assertEquals(13, mergedList.value);
+        mergedList = mergedList.next;
+        assertEquals(4, mergedList.value);
+    }
+
+    // Testing when the second linked list is one node less than the other
+    @Test
+    public void testMergeListsSecondListIsLongerByOne() {
+        LinkedList<Integer> test2 = new LinkedList<>();
+
+        // First Linked List: head -> 1 -> 2 -> 3 -> null
+        test.insert(3);
+        test.insert(2);
+        test.insert(1);
+
+        // Second Linked List: head -> 11 -> 12 -> 13 -> 14 -> null
+        test2.insert(14);
+        test2.insert(13);
+        test2.insert(12);
+        test2.insert(11);
+
+        // merge list should be head -> 1 -> 11 -> 2 -> 12 -> 3 -> 13 -> 14 -> null
+        Node mergedList = test.mergeLists(test, test2);
+
+        // Testing for values of every nodes to see if it match the expected
+        assertEquals(1, mergedList.value);
+        mergedList = mergedList.next;
+        assertEquals(11, mergedList.value);
+        mergedList = mergedList.next;
+        assertEquals(2, mergedList.value);
+        mergedList = mergedList.next;
+        assertEquals(12, mergedList.value);
+        mergedList = mergedList.next;
+        assertEquals(3, mergedList.value);
+        mergedList = mergedList.next;
+        assertEquals(13, mergedList.value);
+        mergedList = mergedList.next;
+        assertEquals(14, mergedList.value);
+    }
+
+    // Testing when first linked list is three nodes more than the other
+    @Test
+    public void testMergeListsFirstListIsLongerByThree() {
+        LinkedList<Integer> test2 = new LinkedList<>();
+
+        // First Linked List: head -> 1 -> 2 -> 3 -> 4 -> 5 -> null
+        test.insert(5);
+        test.insert(4);
+        test.insert(3);
+        test.insert(2);
+        test.insert(1);
+
+        // Second Linked List: head -> 11 -> 12 -> null
+        test2.insert(12);
+        test2.insert(11);
+
+        // merge list should be head -> 1 -> 11 -> 2 -> 12 -> 3 -> 4 -> 5 -> null
+        Node mergedList = test.mergeLists(test, test2);
+
+        // Testing for values of every nodes to see if it match the expected
+        assertEquals(1, mergedList.value);
+        mergedList = mergedList.next;
+        assertEquals(11, mergedList.value);
+        mergedList = mergedList.next;
+        assertEquals(2, mergedList.value);
+        mergedList = mergedList.next;
+        assertEquals(12, mergedList.value);
+        mergedList = mergedList.next;
+        assertEquals(3, mergedList.value);
+        mergedList = mergedList.next;
+        assertEquals(4, mergedList.value);
+        mergedList = mergedList.next;
+        assertEquals(5, mergedList.value);
+    }
+
+    // Testing when second linked list is three nodes less than the other
+    @Test
+    public void testMergeListsSecondListIsLongerByThree() {
+        LinkedList<Integer> test2 = new LinkedList<>();
+
+        // First Linked List: head -> 1 -> 2 -> null
+        test.insert(2);
+        test.insert(1);
+
+        // Second Linked List: head -> 11 -> 12 -> 13 -> 14 -> 15 -> null
+        test2.insert(15);
+        test2.insert(14);
+        test2.insert(13);
+        test2.insert(12);
+        test2.insert(11);
+
+        // merge list should be head -> 1 -> 11 -> 2 -> 12 -> 13 -> 14 -> 15 -> null
+        Node mergedList = test.mergeLists(test, test2);
+
+        // Testing for values of every nodes to see if it match the expected
+        assertEquals(1, mergedList.value);
+        mergedList = mergedList.next;
+        assertEquals(11, mergedList.value);
+        mergedList = mergedList.next;
+        assertEquals(2, mergedList.value);
+        mergedList = mergedList.next;
+        assertEquals(12, mergedList.value);
+        mergedList = mergedList.next;
+        assertEquals(13, mergedList.value);
+        mergedList = mergedList.next;
+        assertEquals(14, mergedList.value);
+        mergedList = mergedList.next;
+        assertEquals(15, mergedList.value);
+    }
+
+    // Testing when both linked lists is empty
+    @Test
+    public void testMergeListsBothListsEmpty() {
+        LinkedList<Integer> test2 = new LinkedList<>();
+
+        Node mergedList = test.mergeLists(test, test2);
+
+        assertNull(mergedList);
+    }
+
+    // Testing when both linked lists have size of 1
+    @Test
+    public void testMergeListsBothListSizeOne() {
+        LinkedList<Integer> test2 = new LinkedList<>();
+
+        test.insert(1);
+        test2.insert(11);
+
+        Node mergedList = test.mergeLists(test, test2);
+
+        assertEquals(1, mergedList.value);
+        mergedList = mergedList.next;
+        assertEquals(11, mergedList.value);
+    }
+
+    // Testing when both linked list have different data types
+    @Test
+    public void testMergeListsDifferentDataTypes() {
+        LinkedList<String> test2 = new LinkedList<>();
+
+        test.insert(3);
+        test.insert(2);
+        test.insert(1);
+
+        test2.insert("three");
+        test2.insert("two");
+        test2.insert("one");
+
+        // merge list should be: head -> 1 -> one -> 2 -> two -> 3 -> three -> null
+        Node mergedList = test.mergeLists(test, test2);
+
+        // Testing for values of every nodes to see if it match the expected
+        assertEquals(1, mergedList.value);
+        mergedList = mergedList.next;
+        assertEquals("one", mergedList.value);
+        mergedList = mergedList.next;
+        assertEquals(2, mergedList.value);
+        mergedList = mergedList.next;
+        assertEquals("two", mergedList.value);
+        mergedList = mergedList.next;
+        assertEquals(3, mergedList.value);
+        mergedList = mergedList.next;
+        assertEquals("three", mergedList.value);
+    }
+
+    // Test if one linked list is empty and the other one has 2 nodes in it. Should just return
+    // a list that is equivalent to the linked list that is not empty.
+    @Test
+    public void testMergeListOneEmptyOtherOneNot() {
+        LinkedList<String> test2 = new LinkedList<>();
+
+        test.insert(3);
+        test.insert(2);
+        test.insert(1);
+
+        // merge list should be: head -> 1 -> 2 -> 3 -> null
+        Node mergedList = test.mergeLists(test, test2);
+
+        assertEquals(1, mergedList.value);
+        mergedList = mergedList.next;
+        assertEquals(2, mergedList.value);
+        mergedList = mergedList.next;
+        assertEquals(3, mergedList.value);
+        mergedList = mergedList.next;
+    }
 }
