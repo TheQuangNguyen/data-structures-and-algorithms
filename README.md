@@ -11,6 +11,8 @@ This repo contains common algorithms problems and my solutions to those problems
 5. [Linked List Insertion](#linked-list-insertion)
 6. [Get Kth Value From End Of Linked List](#get-kth-value-from-end-of-linked-list)
 7. [Merge Two Linked Lists](#merge-two-linked-lists)
+8. [Stacks and Queues Implementation](#stacks-and-queues-implementation)
+
 
 ## Reverse an Array
 
@@ -168,6 +170,38 @@ Space complexity would be O(1) since we only need four variables to keep track o
 [Merging Two Linked Lists Solution](https://github.com/TheQuangNguyen/data-structures-and-algorithms/blob/master/Data-Structures/src/main/java/linkedList/LinkedList.java)
 
 ![alt text](/assets/merging-linked-list.png)
+
+## Stacks and Queues Implementation
+This is my own implementation of the stack and queue data structures. Stacks and queues are very similar to linked list but what's different is how we interact with the content of each data structure. 
+
+Stacks is used to order items being push into the stack in such a way that the most recently added item would always be inserted at the front of the stack. This way when we pop off an item, we would take off the last item that we insert in the stack, which is the one at the front.  
+
+Queues is similar to stacks but instead, queues order items such that the order that the items inserted into the queues is the order of the items that should be removed from the queues. Queues have two pointers that point to the back and the front of the queue. Items being inserted are said to be enqueued to the back of the queue nad items being removed are said to be dequeued from the front of the queue. 
+
+### Challenge
+1. Create a Node class that has properties for the value stored in the Node, and a pointer to the next node.
+2. Create a Stack class that has a top property. It creates an empty Stack when instantiated.
+    - This object should be aware of a default empty value assigned to top when the stack is created.
+    - Define a method called push which takes any value as an argument and adds a new node with that value to the top of the stack with an O(1) Time performance.
+    - Define a method called pop that does not take any argument, removes the node from the top of the stack, and returns the node’s value.
+    - Define a method called peek that does not take an argument and returns the value of the node located on top of the stack, without removing it from the stack.
+3. Create a Queue class that has a front property. It creates an empty Queue when instantiated.
+    - This object should be aware of a default empty value assigned to front when the queue is created.
+    - Define a method called enqueue which takes any value as an argument and adds a new node with that value to the back of the queue with an O(1) Time performance.
+    - Define a method called dequeue that does not take any argument, removes the node from the front of the queue, and returns the node’s value.
+    - Define a method called peek that does not take an argument and returns the value of the node located in the front of the queue, without removing it from the queue.
+
+### Approach & Efficiency
+1. **Stacks** - should contain a private instance variable called **top** that points to the item at the front of the stack. 
+    - `void push(T value)` - push method should take in a generic variable called value that will hold the value of the node that we will add to the stack and return void. All we have to do is to create a new node that holds the parameter value and points to the current top. Then set the current top to be the new node. Time and space complexity are O(1).
+    - `T pop()` - pop method should not take in any parameter and it should first check if the stack is empty by checking if the top of the stack is null or not. This is because we cannot pop off something from an empty stack. We would return an exception if pop is used on an empty stack. If the stack is not empty, set the value of the current top node onto a variable. Then set top to be top.next and return the value of the previous top. Time and space complexity are O(1).
+    - `T peek()` - peek method should not take in any parameter and all it has to do is return the value of the node that top points to without modifying the stack. Time and space complexity are O(1).
+
+2. **Queues** - should contain two private instance variables called **front** and **back** that points respectively to the front and back of the queue.
+    - `void enqueue(T value)` - enqueue method should take in a generic variable called value that holds the value of the node that we will add to the queue and return void. We first would have a temporary variable that holds the location of the current back node. Then create a new node that holds the input value and points to null and set this as the current back. Afterward, we have to check if the queue is empty or not by checking if either the front or back points to null. This is because if the queue is empty and we enqueue an item on the queue, then both the front and back would point to the same item. Thus if the queue is empty, have front = back. Otherwise, have the temporary variable that holds the previous back to have its next points to the current back. Time and space complexity are O(1).
+    - `T dequeue()` - dequeue method should not take in any parameter and it should return the value of the removed node. First we would check if the queue is empty since we cannot remove something that is not there. Afterward, store the current front value onto a temporary variable and set the current front to equals the front.next. We then need to check if the queue is empty or not. This is because if the queue contains only one item, then after it is dequeued, the both the front and back should points to null. We only have the front points to front.next which should be null but we also need to set the back to null as well. Finally return the value of the removed node. 
+    - `T peek()` - peek method should not take in any parameter and it should return the value of the node that front points to without modifying the queue. Time and space complexity are O(1).
+
 
 
 
