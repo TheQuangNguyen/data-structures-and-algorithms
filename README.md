@@ -222,6 +222,6 @@ For dequeuing one item, time and space complexity are also O(n) because dequeuin
 
 ### Solution
 
-[Code Implementation for Queue With Two Stacks]()
+[Code Implementation for Queue With Two Stacks](https://github.com/TheQuangNguyen/data-structures-and-algorithms/blob/master/Data-Structures/src/main/java/stacksandqueues/PseudoQueue.java)
 
 ![alt text](/assets/queue-with-stacks.png)
