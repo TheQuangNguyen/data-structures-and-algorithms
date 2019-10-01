@@ -12,6 +12,7 @@ This repo contains common algorithms problems and my solutions to those problems
 6. [Get Kth Value From End Of Linked List](#get-kth-value-from-end-of-linked-list)
 7. [Merge Two Linked Lists](#merge-two-linked-lists)
 8. [Stacks and Queues Implementation](#stacks-and-queues-implementation)
+9. [Queue With Two Stacks Implementation](#queue-with-two-stacks-implementation)
 
 
 ## Reverse an Array
@@ -202,6 +203,25 @@ Queues is similar to stacks but instead, queues order items such that the order 
     - `T dequeue()` - dequeue method should not take in any parameter and it should return the value of the removed node. First we would check if the queue is empty since we cannot remove something that is not there. Afterward, store the current front value onto a temporary variable and set the current front to equals the front.next. We then need to check if the queue is empty or not. This is because if the queue contains only one item, then after it is dequeued, the both the front and back should points to null. We only have the front points to front.next which should be null but we also need to set the back to null as well. Finally return the value of the removed node. 
     - `T peek()` - peek method should not take in any parameter and it should return the value of the node that front points to without modifying the queue. Time and space complexity are O(1).
 
+## Queue With Two Stacks Implementation
 
+### Challenge
 
+Implement a Queue using two Stacks. This PseudoQueue class should internally utilize two stack objects implemented in previous lab. The PseudoClass should have the following methods:
+* `enqueue(value)` which inserts `value` into the PseudoQueue, using a first-in, first-out approach.
+* `dequeue()` which extracts a value from the PseudoQueue, using a first-in, first-out approach.
 
+### Approach & Efficiency
+
+The order of items being stored and pop off of a stack is the reverse of a queue in which for stacks, it is last-in-first-out(LIFO) while queue is first-in-first-out(FIFO). Therefore, if one were to push multiple values onto a stack and pop off those individual values and push them onto a second stack, this has the effect of reversing the order of the first stack which make the second stack's order be like a queue. 
+
+Thus an approach to this problem would be to have enqueue only push to the first stack. This first stack would be the intermediary needed to reverse the order being push onto the stack. Multiple consecutive enqueue would push multiple values on the first stack. Only when dequeue is called would we transfer the items from the first stack to the second stack by popping off items one by one and pushing them onto the second stack. At this current stage, the first stack is empty and the second stack contain the order of a queue. Now, when we dequeue again, we would keep popping off items from the second stack until it is empty. Enqueue here and there would only affect first stack as the items are being pushed to the first stack.
+
+For enqueuing one item, time and space complexity are both O(1)
+For dequeuing one item, time and space complexity are also O(n) because dequeuing may involves transfering all items from first stack to second stack and consume time proportional to how many items being added and space proportional to how many things added to second stack. 
+
+### Solution
+
+[Code Implementation for Queue With Two Stacks]()
+
+![alt text](/assets/queue-with-stacks.png)
