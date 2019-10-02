@@ -13,6 +13,7 @@ This repo contains common algorithms problems and my solutions to those problems
 7. [Merge Two Linked Lists](#merge-two-linked-lists)
 8. [Stacks and Queues Implementation](#stacks-and-queues-implementation)
 9. [Queue With Two Stacks Implementation](#queue-with-two-stacks-implementation)
+10. [Animal Shelter](#animal-shelter)
 
 
 ## Reverse an Array
@@ -225,3 +226,25 @@ For dequeuing one item, time and space complexity are also O(n) because dequeuin
 [Code Implementation for Queue With Two Stacks](https://github.com/TheQuangNguyen/data-structures-and-algorithms/blob/master/Data-Structures/src/main/java/stacksandqueues/PseudoQueue.java)
 
 ![alt text](/assets/queue-with-stacks.png)
+
+## Animal Shelter
+
+### Problem Domain 
+
+Create a class called AnimalShelter which holds only cat and dog. The shelter operates using a first-in, first-out approach like a queue. Implement the following methods: 
+- `enqueue(animal)`: adds animal to the shelter. animal can be either a dog or a cat object.  
+- `dequeue(pref)`: returns either a dog or a cat. If a cat or dog isn’t preferred, return whichever animal has been waiting in the shelter the longest.
+
+### Approach & Efficiency 
+
+At first, I was thinking of implementing two stacks that work like a queue since if I were to use two queues I would able to keep Cat and Dog apart but when it comes to whichever comes first, I would not able to know. But implementing two stacks involving too much convoluted transfering of items from one stack to another and so I am thinking of adding a time stamp to each item being added to the Animal Shelter so that I can differentiate which one came first. In that case, using two queues would be most efficient time wise since I would only need to check the time on the front of both queues to see which animal came first. If preference is either cat or dog, then just dequeue from the respective queues. 
+
+For enqueue, time complexity would be O(1) and space complexity is O(n) depending on how much animal is enqueued
+
+For dequeue, time complexity would be O(1) and space complexity is O(1)
+
+### Solution 
+
+[Code Implementation of Animal Shelter]()
+
+![alt text](/assets/animal-shelter.png)
