@@ -14,6 +14,7 @@ This repo contains common algorithms problems and my solutions to those problems
 8. [Stacks and Queues Implementation](#stacks-and-queues-implementation)
 9. [Queue With Two Stacks Implementation](#queue-with-two-stacks-implementation)
 10. [Animal Shelter](#animal-shelter)
+11. [Brackets Validation](#brackets-validation)
 
 
 ## Reverse an Array
@@ -248,3 +249,27 @@ For dequeue, time complexity would be O(1) and space complexity is O(1)
 [Code Implementation of Animal Shelter]()
 
 ![alt text](/assets/animal-shelter.png)
+
+## Brackets Validation
+
+### Problem Domain 
+
+Write a function that takes a string as its only argument and should return a boolean representing whether or not the brackets in the string are balanced. There are 3 types of brackets: `[]`, `()`, `{}`. 
+
+Sample Input: `()[[Extra Characters]]`
+
+Sample Output: `TRUE`
+
+### Approach & Efficiency
+
+A validated string of brackets should have all left brackets matching its counterpart right brackets and in the correct order as well. `[{]}` have matching brackets but they are not in the correct order. The most recently seen left brackets if reading from left to right should have the next right brackets match it. Therefore, implementing a stack would make the most sense here to keep track of the most recently seen left brackets. The algorithm is pretty simple. Start by first initialize a Stack and going through each character in the string using a loop. Then check if the character is any of the left brackets. If it is, then add it to the stack. Otherwise, if it is any of the right brackets, check the top of the stack for which left bracket it needs to match. If the right bracket does not match the left bracket, then return false immediately. On the other hand, if they match, then pop off the matched left bracket from the stack and continue to the next character. Check for all characters and see at the end if the stack is empty or not. If it is not empty, then that means there were left brackets that were not matched and function should return false. If it is empty, then that means we matched every bracket with its counterpart and so it should return true. 
+
+Time complexity of this would be `O(n)` since we can go through every character of the string in order to validate that the brackets are balanced.
+
+Space complexity of this would be `O(n)` since there might be case that the string is full of left brackets that would fill up the stack. 
+
+### Solution 
+
+[Code Implementation]()
+
+![alt text](/assets/brackets-validation.png)
