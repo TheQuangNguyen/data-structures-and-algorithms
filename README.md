@@ -270,6 +270,6 @@ Space complexity of this would be `O(n)` since there might be case that the stri
 
 ### Solution 
 
-[Code Implementation]()
+[Code Implementation](https://github.com/TheQuangNguyen/data-structures-and-algorithms/blob/master/Data-Structures/src/main/java/utilities/MultiBracketValidation.java)
 
 ![alt text](/assets/brackets-validation.png)
