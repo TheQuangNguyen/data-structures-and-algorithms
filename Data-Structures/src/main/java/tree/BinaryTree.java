@@ -1,5 +1,8 @@
 package tree;
 
+import stacksandqueues.Queue;
+import stacksandqueues.Stack;
+
 import java.util.ArrayList;
 
 public class BinaryTree<T> {
@@ -20,12 +23,11 @@ public class BinaryTree<T> {
     }
 
     // helper method for pre-order traversal
-    public ArrayList<T> preOrder(Node currentNode, ArrayList<T> values) {
+    private ArrayList<T> preOrder(Node currentNode, ArrayList<T> values) {
         if (currentNode == null) {
             return values;
-        } else {
-            values.add((T)currentNode.value);
         }
+        values.add((T)currentNode.value);
         values = preOrder(currentNode.left, values);
         values = preOrder(currentNode.right, values);
         return values;
@@ -38,14 +40,13 @@ public class BinaryTree<T> {
     }
 
     // helper method for in-order traversal
-    public ArrayList<T> inOrder(Node currentNode, ArrayList<T> values) {
-        values = preOrder(currentNode.left, values);
+    private ArrayList<T> inOrder(Node currentNode, ArrayList<T> values) {
         if (currentNode == null) {
             return values;
-        } else {
-            values.add((T)currentNode.value);
         }
-        values = preOrder(currentNode.right, values);
+        values = inOrder(currentNode.left, values);
+        values.add((T)currentNode.value);
+        values = inOrder(currentNode.right, values);
         return values;
     }
 
@@ -56,14 +57,47 @@ public class BinaryTree<T> {
     }
 
     // helper method for post-order traversal
-    public ArrayList<T> postOrder(Node currentNode, ArrayList<T> values) {
-        values = preOrder(currentNode.left, values);
-        values = preOrder(currentNode.right, values);
+    private ArrayList<T> postOrder(Node currentNode, ArrayList<T> values) {
         if (currentNode == null) {
             return values;
-        } else {
-            values.add((T)currentNode.value);
-            return values;
         }
+        values = postOrder(currentNode.left, values);
+        values = postOrder(currentNode.right, values);
+        values.add((T)currentNode.value);
+        return values;
     }
+
+    // add new value to binary tree by randomly choose to traverse down the tree either going
+    // right or left and insert the node whenever there is an empty spot.
+    public void add(T value) {
+        this.root = add(this.root, value);
+    }
+
+    // helper method for adding new value to binary tree using recursion
+    private Node add(Node currentNode, T value) {
+        if (currentNode == null) {
+            currentNode = new Node(value);
+            return currentNode;
+        }
+        double randomNum = Math.random();
+        if (randomNum >= 0.5) {
+            currentNode.right = add(currentNode.right, value);
+        } else {
+            currentNode.left = add(currentNode.left, value);
+        }
+        return currentNode;
+    }
+
+//    @Override
+//    public String toString() {
+//        StringBuilder tree = new StringBuilder();
+//        Queue<T> queue = new Queue<>();
+//
+//    }
+//
+//    private String helperToString(Queue queue, StringBuilder tree) {
+//        Node currentNode = queue.dequeueNode();
+//        queue.enqueue(currentNode.left);
+//        queue.enqueue(currentNode.right);
+//    }
 }
