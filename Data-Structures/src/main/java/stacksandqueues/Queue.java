@@ -36,6 +36,19 @@ public class Queue<T> {
         return value;
     }
 
+    public Node dequeueNode() {
+        if (isEmpty()) {
+            throw new NoSuchElementException("Cannot dequeue due to queue being empty");
+        }
+        Node dequeueNode = this.front;
+        this.front = this.front.next;
+        // if there was one element before dequeue, then front and back should be null
+        if (isEmpty()) {
+            this.back = null;
+        }
+        return dequeueNode;
+    }
+
     //  Define a method called peek that does not take an argument and
     //  returns the value of the node located in the front of the queue, without removing it from the queue.
     public T peek() {
