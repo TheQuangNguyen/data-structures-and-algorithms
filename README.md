@@ -16,6 +16,7 @@ This repo contains common algorithms problems and my solutions to those problems
 10. [Animal Shelter](#animal-shelter)
 11. [Brackets Validation](#brackets-validation)
 12. [Binary/Binary Search Tree Implementation](#binary/binary-search-tree-implementation)
+13. [Fizz Buzz Tree](#fizz-buzz-tree)
 
 
 ## Reverse an Array
@@ -305,3 +306,26 @@ Searching is as straightforward since you are doing the same thing but at each n
 **Binary Search Tree**
 - `void add(T value)` - takes in a value and add the value in the correct spot in BST.
 - `boolean contains(T value)` - search the tree if the value is in the tree. Return true or false. 
+
+## Fizz Buzz Tree
+
+### Problem Domain
+
+Write a function called FizzBuzzTree which takes a tree as an argument. Without utilizing any of the built-in methods available to your language, determine weather or not the value of each node is divisible by 3, 5 or both, and change the value of each of the nodes:
+- If the value is divisible by 3, replace the value with “Fizz”
+- If the value is divisible by 5, replace the value with “Buzz”
+- If the value is divisible by 3 and 5, replace the value with “FizzBuzz”
+
+Return the tree with its new values.
+
+### Approach & Efficiency
+
+The approach is fairly straightforward. Traverse the tree using any sort of traversal (I use preorder traversal in my code) and for each node, checks if its value is divisible by 3, 5, or both and change the values according to the problem domain. Then recurse through all other nodes until null node has been hit. 
+
+Time complexity of this would be O(n) since we have to visit every nodes to check for its value.
+
+Space complexity would be O(n) for call stack since the approach uses recursion but for persistance memory, it would be O(1) since we are not storing anything. 
+
+### Solution 
+
+![alt text](/assets/fizzbuzz.png)
