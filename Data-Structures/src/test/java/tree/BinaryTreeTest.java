@@ -81,7 +81,7 @@ public class BinaryTreeTest {
         BT.root.left = new Node(20);
         BT.root.right = new Node(50);
         BT.breadthFirstPrint();
-        assertEquals("10\n20\n50\n", consoleMessage.toString());
+        assertEquals("10\n20\n50", consoleMessage.toString());
     }
 
     // test breadth-first for binary tree with multiple levels and nodes
@@ -99,6 +99,6 @@ public class BinaryTreeTest {
         BT.root.right.left.right.right = new Node(10);
         BT.breadthFirstPrint();
 
-        assertEquals("1\n2\n3\n4\n5\n6\n7\n8\n9\n10\n", consoleMessage.toString());
+        assertEquals("1\n2\n3\n4\n5\n6\n7\n8\n9\n10", consoleMessage.toString());
     }
 }

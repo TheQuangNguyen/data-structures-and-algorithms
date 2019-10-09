@@ -4,6 +4,7 @@ import stacksandqueues.Queue;
 import stacksandqueues.Stack;
 
 import java.util.ArrayList;
+import java.util.StringJoiner;
 
 public class BinaryTree<T> {
     Node root;
@@ -96,12 +97,14 @@ public class BinaryTree<T> {
         }
         Queue<Node> queue = new Queue<>();
         queue.enqueue(this.root);
+        StringJoiner result = new StringJoiner("\n");
 
         // Put each node from left to right in the queue at next level while printing values of nodes
         // at the current level
         while(!queue.isEmpty()) {
             Node currentNode = queue.dequeue();
-            System.out.println(currentNode.value);
+//            System.out.println(currentNode.value);
+            result.add(currentNode.value.toString());
             if (currentNode.left != null) {
                 queue.enqueue(currentNode.left);
             }
@@ -109,5 +112,7 @@ public class BinaryTree<T> {
                 queue.enqueue((currentNode.right));
             }
         }
+
+        System.out.print(result);
     }
 }
