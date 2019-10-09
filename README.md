@@ -17,6 +17,7 @@ This repo contains common algorithms problems and my solutions to those problems
 11. [Brackets Validation](#brackets-validation)
 12. [Binary/Binary Search Tree Implementation](#binary/binary-search-tree-implementation)
 13. [Fizz Buzz Tree](#fizz-buzz-tree)
+14. [Breadth-First Traversal](#breadth-first-traversal)
 
 
 ## Reverse an Array
@@ -329,3 +330,22 @@ Space complexity would be O(n) for call stack since the approach uses recursion 
 ### Solution 
 
 ![alt text](/assets/fizzbuzz.png)
+
+## Breadth-First Traversal
+
+### Problem Domain
+
+Write a breadth first traversal method which takes a Binary Tree as its unique input. Without utilizing any of the built-in methods available to your language, traverse the input tree using a Breadth-first approach; print every visited node’s value.
+
+### Approach & Efficiency 
+
+In order to keep track of all the nodes from left to right at each level as we traverse down the tree, a queue was used to hold all the nodes at each level. To implement this, we would first enqueue the root of the tree into our queue. Then using a while loop, checks if the q is empty or not. If it is, exits the loop, if not, then continue the iteration. Basically we would dequeue the front of the queue and print the node's value. Then we would check if the left and/or right of the node is null or not. If it is, we do not do anything. If not, we would enqueue the left adn/or the right child node into the queue. We continue until the queue is empty which is when we went through every nodes. 
+
+Time complexity of this is O(n) since we have to go through every nodes.
+Space complexity of this is O(log(n)) because the queue need to hold at most the number of nodes at the lowest level of the tree.  
+
+### Solution 
+
+[Code Solution]()
+
+![alt text](/assets/breadth-first.png)
