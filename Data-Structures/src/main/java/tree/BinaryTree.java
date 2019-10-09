@@ -88,16 +88,26 @@ public class BinaryTree<T> {
         return currentNode;
     }
 
-//    @Override
-//    public String toString() {
-//        StringBuilder tree = new StringBuilder();
-//        Queue<T> queue = new Queue<>();
-//
-//    }
-//
-//    private String helperToString(Queue queue, StringBuilder tree) {
-//        Node currentNode = queue.dequeueNode();
-//        queue.enqueue(currentNode.left);
-//        queue.enqueue(currentNode.right);
-//    }
+    // traverse the input Binary Tree breadth-first and prints each node value along the way
+    public void breadthFirstPrint() {
+        // checks if the tree is empty so that we do not have to check further if it is
+        if (this.root == null) {
+            return;
+        }
+        Queue<Node> queue = new Queue<>();
+        queue.enqueue(this.root);
+
+        // Put each node from left to right in the queue at next level while printing values of nodes
+        // at the current level
+        while(!queue.isEmpty()) {
+            Node currentNode = queue.dequeue();
+            System.out.println(currentNode.value);
+            if (currentNode.left != null) {
+                queue.enqueue(currentNode.left);
+            }
+            if (currentNode.right != null) {
+                queue.enqueue((currentNode.right));
+            }
+        }
+    }
 }

@@ -39,6 +39,15 @@ public class QueueTest {
         assertEquals("front -> one -> two -> three -> four -> five -> null", queue.toString());
     }
 
+    // test dequeue when there is only one item in queue
+    @Test
+    public void testDequeueWhenQueueHasOneItem() {
+        queue.enqueue("one");
+        assertEquals("front -> one -> null", queue.toString());
+        queue.dequeue();
+        assertEquals("front -> null", queue.toString());
+    }
+
     // test if we can dequeue the the first item added to the queue
     @Test
     public void testDequeueOneItemOffFilledQueue() {
