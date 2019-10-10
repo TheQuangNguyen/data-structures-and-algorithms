@@ -101,4 +101,55 @@ public class BinaryTreeTest {
 
         assertEquals("1\n2\n3\n4\n5\n6\n7\n8\n9\n10", consoleMessage.toString());
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    // test find max for tree that has one node
+    @Test
+    public void testFindMaxOneNodeTree() {
+        BT.root = new Node(10);
+        int max = BT.findMaximumValue();
+
+        assertEquals(10, max);
+    }
+
+    // test find max for tree that has two nodes
+    @Test
+    public void testFindMaxTwoNodesTree() {
+        BT.root = new Node(5);
+        BT.root.right = new Node(1);
+        int max = BT.findMaximumValue();
+
+        assertEquals(5, max);
+    }
+
+    // test find max for tree that has three nodes
+    @Test
+    public void testFindMaxThreeNodesTree() {
+        BT.root = new Node(5);
+        BT.root.right = new Node(1);
+        BT.root.left = new Node(10);
+        int max = BT.findMaximumValue();
+
+        assertEquals(10, max);
+    }
+
+    // test find max for tree that has multiple nodes
+    @Test
+    public void testFindMaxMultipleNodes() {
+        BT.root = new Node(6);
+        BT.root.left = new Node(1);
+        BT.root.right = new Node(10);
+        BT.root.left.right = new Node(4);
+        BT.root.left.right.left = new Node(15);
+        BT.root.left.right.right = new Node(0);
+        BT.root.right.left = new Node(3);
+        BT.root.right.right = new Node(24);
+        BT.root.right.left.right = new Node(15);
+        BT.root.right.left.right.right = new Node(24);
+
+        int max = BT.findMaximumValue();
+
+        assertEquals(24, max);
+    }
 }
