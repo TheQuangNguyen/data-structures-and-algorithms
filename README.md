@@ -18,6 +18,7 @@ This repo contains common algorithms problems and my solutions to those problems
 12. [Binary/Binary Search Tree Implementation](#binary/binary-search-tree-implementation)
 13. [Fizz Buzz Tree](#fizz-buzz-tree)
 14. [Breadth-First Traversal](#breadth-first-traversal)
+15. [Find Maximum Value in Binary Tree](#find-maximum-value-in-binary-tree)
 
 
 ## Reverse an Array
@@ -349,3 +350,19 @@ Space complexity of this is O(log(n)) because the queue need to hold at most the
 [Code Solution]()
 
 ![alt text](/assets/breadth-first.png)
+
+## Find Maximum Value In Binary Tree
+
+### Problem Domain
+
+Write an instance method called **find-maximum-value**. Without utilizing any of the built-in methods available to your language, return the maximum value stored in the tree. You can assume that the values stored in the Binary Tree will be numeric.
+
+### Approach and Efficiency
+
+The solution will use a helper method that takes in a current node and also the maximum value found so far and return the max. Using recursion, first input the root of the tree and the value of the root into the helper method. The method will first check if the node is null or not. If it is, then return the max immediately. Otherwise, check if the current node value is greater than the max and change the max accordingly. Then recurse through the left and the right child nodes while passing in the current max. It is left to assume that the recursion will return the max of the left subtree and the right subtree and so at the end, just compare the two max and whichever is bigger we would return. 
+
+This implemenation would takes O(n) time since we have to traverse through every nodes and O(1) space since we only store the current max, left max and right max.
+
+### Solution
+
+![alt text](/assets/find-max.png)

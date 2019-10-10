@@ -115,4 +115,28 @@ public class BinaryTree<T> {
 
         System.out.print(result);
     }
+
+    // Return the maximum value stored in the tree. Assume that the values stored in the binary tree will be numeric.
+    // Use postorder traversal to look at left and right subtree and compare the max value in both.
+    public int findMaximumValue() {
+        return maxValue(this.root, (int)this.root.value);
+    }
+
+    // helper method to traverse the tree recursively
+    public int maxValue(Node currentNode, int max) {
+        if (currentNode == null) {
+            return max;
+        }
+        if ((int)currentNode.value >= max) {
+            max = (int)currentNode.value;
+        }
+        int leftMax = maxValue(currentNode.left, max);
+        int rightMax = maxValue(currentNode.right, max);
+        if (leftMax > rightMax) {
+            max = leftMax;
+        } else {
+            max = rightMax;
+        }
+        return max;
+    }
 }
