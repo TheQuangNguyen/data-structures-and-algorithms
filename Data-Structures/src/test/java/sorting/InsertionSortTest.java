@@ -43,9 +43,9 @@ public class InsertionSortTest {
     // Test for 2 numbers in array not in order
     @Test
     public void testInsertionSortArrayTwoElementsNotInOrder() {
-        int[] arr = new int[]{7,3};
+        int[] arr = {7,3};
         int[] sortedArr = insertionSort.sort(arr);
-        int[] expected = new int[]{3,7};
+        int[] expected = {3,7};
 
         assertArrayEquals(expected, sortedArr);
     }
