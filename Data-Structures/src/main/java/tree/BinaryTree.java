@@ -123,7 +123,7 @@ public class BinaryTree<T> {
     }
 
     // helper method to traverse the tree recursively
-    public int maxValue(Node currentNode, int max) {
+    private int maxValue(Node currentNode, int max) {
         if (currentNode == null) {
             return max;
         }
