@@ -19,7 +19,7 @@ public class QuickSort implements SortingAlgorithm {
     private int partition(int[] arr, int left, int right) {
         int pivot = arr[right];
         int low = left - 1;
-        for (int i = 0; i < right; i++) {
+        for (int i = left; i < right; i++) {
             if (arr[i] <= pivot) {
                 low++;
                 swap(arr, i, low);

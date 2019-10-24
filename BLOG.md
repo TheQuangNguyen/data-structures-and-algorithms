@@ -6,6 +6,7 @@ This blog contains detailed explanations of popular sorting algorithms for new p
 
 1. [Insertion Sort](#insertion-sort)
 2. [Merge Sort](#merge-sort)
+3. [Quick Sort](#quick-sort)
 
 # Insertion Sort
 
@@ -114,3 +115,63 @@ ALGORITHM Merge(left, right, arr)
 
 * [Hackerearth](https://www.hackerearth.com/practice/algorithms/sorting/merge-sort/tutorial/)
 * [InterviewBit](https://www.interviewbit.com/tutorial/merge-sort-algorithm/)
+
+# Quick Sort
+
+Quick sort is another fast sorting algorithm whose speed is comparable to merge sort. It is also a divide and conquer algorithm that utilize recursion although in a different way than merge sort. The algorithm uses a random arbitrary element in the list that we call the "pivot". We would sort the list in such a way that everything to the left of the pivot is of lesser values and everything to the right of the pivot is of greater values. If we do this recursively, we would get to the point of having 2 elements in the list in which if we use the logic that we said quick sort is gonna do, it would sort those 2 elements in the correct order. Once we get to that point, our algorithm successfully sorted the entire list. Quick sort, unlike merge sort, is unstable in that its performance largely depend on how we choose our pivot. If we choose our pivot to be lowest or largest element in the list everytime within the recursive process, then its performance will degrade to O(n^2). We can randomize our pivot so that most of the time, the pivot would be a value in between the lowest and largest values which in that case, performance would be O(nlog(n)). Space wise, it is better than merge sort since quick sort swap values around like insertion sort and so space complexity is O(1).  
+
+## Diagram
+
+Source: [InterviewBit](https://www.interviewbit.com/tutorial/quicksort-algorithm/)
+
+<img src="/assets/quick-sort.png" alt="Quick Sort Diagram">
+
+## Algorithm
+
+Now that we are familiar with recursion, we can dive straight into the meat of quick sort. Basically at every recursive steps, we would do the same thing as portrayed in the diagram where we select a `pivot` and sort the rest of elements so that the lesser values are to the left of the `pivot` and the greater values are to the right of the `pivot`. In our case, we would always choose the last element in the list/sublist that we are sorting to be our pivot for convenience sake. We would have 2 pointers, one called `low` to reference the boundary where all the lowest values would be to the left of that pointer and one called `i` to traverse through the entire list except for the `pivot` itself. We would set up a for loop to increment `i` from 0 to the second to last value since the last value is the pivot and set `low` as the first element in the list. At every iteration, we compare the values at `i` to the value at the `pivot`. If it is less than the `pivot`, then we swap the value at `i` with the value at `low` and increment `low` by 1. Since we only do this when we encounter a lower value than the `pivot`, we effectively sort all of the lower values to the front of the list and all the larger values to the back of the list. The location of the `low` pointer marks the separation between the lower and larger values. At the end, we swap the `low` pointer with the `pivot` so now the pivot is the separation point. It is important to note that the region of lesser and greater values are not sorted themselves. Afterward we recursively doing the same thing now for the lesser and greater regions. This works because when we get to a list of only 1 or 2 elements, we can sort them super easy. Once we get to the point, our list is basically all sorted.   
+
+## Pseudocode
+
+```
+ALGORITHM QuickSort(arr, left, right)
+    if left < right
+        // Partition the array by setting the position of the pivot value 
+        DEFINE position <-- Partition(arr, left, right)
+        // Sort the left
+        QuickSort(arr, left, position - 1)
+        // Sort the right
+        QuickSort(arr, position + 1, right)
+
+ALGORITHM Partition(arr, left, right)
+    // set a pivot value as a point of reference
+    DEFINE pivot <-- arr[right]
+    // create a variable to track the largest index of numbers lower than the defined pivot
+    DEFINE low <-- left - 1
+    for i <- left to right do
+        if arr[i] <= pivot
+            low++
+            Swap(arr, i, low)
+
+     // place the value of the pivot location in the middle.
+     // all numbers smaller than the pivot are on the left, larger on the right. 
+     Swap(arr, right, low + 1)
+    // return the pivot index point
+     return low + 1
+
+ALGORITHM Swap(arr, i, low)
+    DEFINE temp;
+    temp <-- arr[i]
+    arr[i] <-- arr[low]
+    arr[low] <-- temp
+```
+
+## Readings and References
+
+**Watch this video for visual demonstration of quick sort**
+
+* [Quick Sort | GeeksforGeeks](https://www.youtube.com/watch?v=PgBzjlCcFvc)
+
+**Read these articles for more explanations on merge sort**
+
+* [Hackerearth](https://www.hackerearth.com/practice/algorithms/sorting/quick-sort/tutorial/)
+* [InterviewBit](https://www.interviewbit.com/tutorial/quicksort-algorithm/)
