@@ -10,7 +10,7 @@ public class Hashtable<K, V> {
 
     private LinkedList<Entry<K, V>>[] hashtable;
     private static final double DEFAULT_LOAD_FACTOR = 0.75;
-    private static final int DEFAULT_INITIAL_CAPACITY = 10;
+    private static final int DEFAULT_INITIAL_CAPACITY = 5;
     private static final int HASH_PRIME_NUMBER = 599;
 
     // Define an entry in the hash table that holds the key and value pair
@@ -38,7 +38,7 @@ public class Hashtable<K, V> {
     }
 
     // turns the key into a hash code that will be used as the index to place the entry in the table
-    public int hash(K key) {
+    private int hash(K key) {
         String keyAsString = key.toString();
         int sumOfASCIIValues = 0;
         for (int i = 0; i < keyAsString.length(); i++) {
@@ -56,6 +56,9 @@ public class Hashtable<K, V> {
         }
         Entry newEntry = new Entry(key, value);
         int hashCode = hash(key);
+        if (hashtable[hashCode] == null) {
+            hashtable[hashCode] = new LinkedList<>();
+        }
         hashtable[hashCode].add(newEntry);
         return true;
     }
@@ -63,23 +66,27 @@ public class Hashtable<K, V> {
     // takes in a key and return the value from the table
     public V get(K key) {
         int hashCode = hash(key);
-        Iterator<Entry<K, V>> iterator = hashtable[hashCode].iterator();
-        while (iterator.hasNext()) {
-            Entry currentEntry = (Entry)iterator.next().getValue();
-            if (currentEntry.getKey().equals(key)) {
-                return (V)currentEntry.getValue();
+        if (hashtable[hashCode] == null) {
+            return null;
+        }
+        LinkedList<Entry<K, V>> list = hashtable[hashCode];
+        for (Entry entry: list) {
+            if (entry.getKey().equals(key)) {
+                return (V)entry.getValue();
             }
         }
-        throw new NoSuchElementException("This key does not exist in this hashtable");
+        return null;
     }
 
     // takes in a key and return a boolean, indicating if the key exists in the table already
     public boolean contains(K key) {
         int hashCode = hash(key);
-        Iterator<Entry<K, V>> iterator = hashtable[hashCode].iterator();
-        while (iterator.hasNext()) {
-            Entry currentEntry = (Entry) iterator.next().getValue();
-            if (currentEntry.getKey().equals(key)) {
+        if (hashtable[hashCode] == null) {
+            return false;
+        }
+        LinkedList<Entry<K, V>> list = hashtable[hashCode];
+        for (Entry entry: list) {
+            if (entry.getKey().equals(key)) {
                 return true;
             }
         }
