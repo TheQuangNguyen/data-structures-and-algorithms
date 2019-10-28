@@ -8,7 +8,7 @@ import java.util.NoSuchElementException;
 
 public class Hashtable<K, V> {
 
-    private LinkedList<Entry<K, V>>[] hashtable;
+    protected LinkedList<Entry<K, V>>[] hashtable;
     private static final double DEFAULT_LOAD_FACTOR = 0.75;
     private static final int DEFAULT_INITIAL_CAPACITY = 5;
     private static final int HASH_PRIME_NUMBER = 599;
@@ -38,7 +38,7 @@ public class Hashtable<K, V> {
     }
 
     // turns the key into a hash code that will be used as the index to place the entry in the table
-    private int hash(K key) {
+    protected int hash(K key) {
         String keyAsString = key.toString();
         int sumOfASCIIValues = 0;
         for (int i = 0; i < keyAsString.length(); i++) {

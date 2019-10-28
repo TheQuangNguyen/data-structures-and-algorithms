@@ -1,5 +1,6 @@
 package hashtable;
 
+import org.checkerframework.checker.units.qual.K;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -59,7 +60,61 @@ public class HashtableTest {
         hashtable.add(4, "four");
         hashtable.add(5, "five");
 
-
-
+        // check that at least one linked list in the hash table has more than one entries in case of collisions
+        for (int i = 0; i < hashtable.hashtable.length; i++) {
+            if (hashtable.hashtable[i].size() > 1) {
+                assertTrue(hashtable.hashtable[i].size() > 1);
+            }
+        }
     }
+
+    // test that we can get the value from an entry given a key for a hashtable that has multiple collisions
+    @Test
+    public void testGetValueGivenKeyForHashTableThatHasMultipleCollisions() {
+        hashtable.add(0, "zero");
+        hashtable.add(1, "one");
+        hashtable.add(2, "two");
+        hashtable.add(3, "three");
+        hashtable.add(4, "four");
+        hashtable.add(5, "five");
+        hashtable.add(6, "six");
+        hashtable.add(7, "seven");
+        hashtable.add(8, "eight");
+        hashtable.add(9, "nine");
+        hashtable.add(10, "ten");
+
+        assertEquals("ten", hashtable.get(10));
+        assertEquals("six", hashtable.get(6));
+        assertEquals("one", hashtable.get(1));
+    }
+
+    // test get method for when the key does not exist in the hash table. Should return null
+    @Test
+    public void testGetWhenKeyDoesNotExistInHashTable() {
+        hashtable.add(0, "zero");
+        hashtable.add(1, "one");
+        hashtable.add(2, "two");
+        hashtable.add(3, "three");
+        hashtable.add(4, "four");
+        hashtable.add(5, "five");
+        hashtable.add(6, "six");
+        hashtable.add(7, "seven");
+        hashtable.add(8, "eight");
+        hashtable.add(9, "nine");
+        hashtable.add(10, "ten");
+
+        assertNull(hashtable.get(11));
+    }
+
+    // test if hash method give back a hashcode that is expected and also within the range of the capacity of the hash table
+    @Test
+    public void testHashKeyToInRangeValue() {
+        // ASCII value for 5 is 53
+        int hashCode = hashtable.hash(5);
+        int expectedHashCode = (53*599)%5;
+
+        assertEquals(expectedHashCode, hashCode);
+        assertTrue(hashCode < 10 && hashCode >= 0);
+    }
+
 }

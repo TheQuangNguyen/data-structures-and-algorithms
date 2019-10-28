@@ -19,6 +19,7 @@ This repo contains common algorithms problems and my solutions to those problems
 13. [Fizz Buzz Tree](#fizz-buzz-tree)
 14. [Breadth-First Traversal](#breadth-first-traversal)
 15. [Find Maximum Value in Binary Tree](#find-maximum-value-in-binary-tree)
+16. [Hash Table](#hash-table)
 
 
 ## Reverse an Array
@@ -366,3 +367,29 @@ This implemenation would takes O(n) time since we have to traverse through every
 ### Solution
 
 ![alt text](/assets/find-max.png)
+
+## Hash Table 
+
+A hash table is a data structure that allows key-value pairs to be stored within it. The advantage of a hash table over other data structures is that adding, removing, and lookup operations all take O(1) time to execute. This is achieved through utilizing a hash function that takes a key and convert that key into a integer index that determine where in the array that entry would be stored. The hash function is the heart of a hash table and the ability of the hash function to spread all entries somehwat evenly throughout all slots in the array determine how efficient the hash table is.  
+
+### Challenge
+
+Implement a hash table that has the following methods: 
+
+1. `add`: takes in both the key and value. This method should hash the key, and add the key and value pair to the table, handling collisions as needed.
+2. `get`: takes in a key and returns the value from the table.
+3. `contains`: takes in the key and returns a boolean, indicating if the key exists in the table already.
+4. `hash`: takes in an arbitrary key and returns an index in the collection.
+
+***Note**: the above operations should all take O(1) time.
+
+### Approach & Efficiency
+
+This hash table will implement separate chaining as the method to deal with collisions. Separate chaining involves storing entries in the hashtable in an array of linked lists so that even if a collision was to happen, the entry would just be added on to the linked list at that index of the array. 
+
+For the hash function, it is simply converting the key to a string and take the sum of the ASCII values of each of the character of the string and multiple by 599, a prime number, and mod it by the length of the array of the hash table. This would give back an integer that is within the range of the array and that will determine the index of where the entry would be added to.
+
+
+
+
+
