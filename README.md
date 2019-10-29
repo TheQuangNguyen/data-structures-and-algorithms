@@ -20,6 +20,7 @@ This repo contains common algorithms problems and my solutions to those problems
 14. [Breadth-First Traversal](#breadth-first-traversal)
 15. [Find Maximum Value in Binary Tree](#find-maximum-value-in-binary-tree)
 16. [Hash Table](#hash-table)
+17. [Repeated Word](#repeated-word)
 
 
 ## Reverse an Array
@@ -366,7 +367,7 @@ This implemenation would takes O(n) time since we have to traverse through every
 
 ### Solution
 
-![alt text](/assets/find-max.png)
+![find max](/assets/find-max.png)
 
 ## Hash Table 
 
@@ -389,6 +390,21 @@ This hash table will implement separate chaining as the method to deal with coll
 
 For the hash function, it is simply converting the key to a string and take the sum of the ASCII values of each of the character of the string and multiple by 599, a prime number, and mod it by the length of the array of the hash table. This would give back an integer that is within the range of the array and that will determine the index of where the entry would be added to.
 
+## Repeated Word
+
+### Problem Domain 
+
+Write a function that takes in a lenghty string and return the first word that is repeated within the input string. 
+
+### Approach & Efficiency 
+
+The algorithm will utilize a hash table to keep track of all the words that are seen so far. The current word that is being examined will be checked against the hash table to see if the word exist in the table as a key. If it exists, then that means the word has been repeated so we return it. Otherwise move on the next word. If we have not encountered any repeated word at the end when we look at every words, then return null. This approach would take at most `O(n)` time where `n` is the entire length of the string in the case that there is no repeated word. Space-wise, it would be also `O(m)` where `m` is the number of words within the string. 
+
+The other complexity within this problem is to extract each word properly using regex. There are cases that the word contains apostrophe like "can't" or with hyphen like "president-elect" that we have to considered. 
+
+### Solution 
+
+![repeated word solution](/assets/repeated-word.png)
 
 
 
