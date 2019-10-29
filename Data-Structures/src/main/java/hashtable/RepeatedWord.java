@@ -25,7 +25,7 @@ public class RepeatedWord {
                 word.append(currentCharacter);
             } else {
                 // checks for apostrophe that is between the word like can't or won't
-                if (currentCharacter.equals("'") && word.length() > 0) {
+                if ((currentCharacter.equals("'") || currentCharacter.equals("-")) && word.length() > 0) {
                     word.append(currentCharacter);
                 } else if (encounteredWordTable.contains(word.toString())) {
                     return word.toString();

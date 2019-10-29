@@ -42,6 +42,16 @@ public class RepeatedWordTest {
 
         assertEquals("don't", repeatedWord);
     }
+
+    // test for string that has repeated words that contain hyphen like president-elect
+    @Test
+    public void testRepeatedWordForStringThatHasRepeatedWordsContainingHyphen() {
+        String testString = "I am all-knowing, all-powerful, all-knowing again MegaMind";
+        String repeatedWord = repeatedWord(testString);
+
+        assertEquals("all-knowing", repeatedWord);
+    }
+
     // test for empty string
     @Test
     public void testRepeatedWordForEmptyString() {
