@@ -7,16 +7,25 @@ public class TreeIntersection {
 
     public Integer[] treeIntersection(BinaryTree tree1, BinaryTree tree2) {
         Hashtable<Integer, Integer> seenValuesTable = new Hashtable<>();
+        treeTraversal(tree1.root, seenValuesTable);
+        treeTraversal(tree2.root, seenValuesTable);
 
+
+        for (int i = 0; i < seenValuesTable.hashtable.length; i++) {
+            while(seenValuesTable.hashtable[i].)
+        }
     }
 
-    public Hashtable<Integer, Integer> treeTraversal(Node currentNode, Hashtable<Integer, Integer> seenValuesTable) {
+    public void treeTraversal(Node currentNode, Hashtable<Integer, Integer> seenValuesTable) {
         if (currentNode == null) {
-            return seenValuesTable;
+            return;
         }
 
         if (!seenValuesTable.contains((int)currentNode.value)) {
             seenValuesTable.add((Integer)currentNode.value, 1);
         }
+
+        treeTraversal(currentNode.left, seenValuesTable);
+        treeTraversal(currentNode.right, seenValuesTable);
     }
 }
