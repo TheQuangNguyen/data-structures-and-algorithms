@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.StringJoiner;
 
 public class BinaryTree<T> {
-    Node root;
+    public Node root;
 
     public BinaryTree(T value) {
         this.root = new Node(value);

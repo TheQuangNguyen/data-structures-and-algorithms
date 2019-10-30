@@ -406,6 +406,18 @@ The other complexity within this problem is to extract each word properly using 
 
 ![repeated word solution](/assets/repeated-word.png)
 
+## Common Values Between Two Binary Trees
 
+### Problem Domain 
+
+Write a function called `tree_intersection` that takes two binary tree parameters and return a set of values found in both trees. 
+
+### Approach & Efficiency
+
+A solution would be to have a hash table that keep track of all the values seen in both trees. The keys of the hash table would correspond to the values of each node and the values of the hash table would correspond to the number of times that we seen it. Essentially, we keep count of the amount of times that we seen the values and at the end when we traversed both trees, we would return a set of the values that we have seen more than once. This approach requires us to traverse through every nodes of both trees and also look through the entire hash table at the end as well to check which keys have values greater than one. Time complexity would be O(n) where n is the total number of nodes of both trees. Space complexity would also be O(n) since in the worse case where there are no common values, we are storing every values of each node of both trees in the hash table. 
+
+### Solution 
+
+![Common Values Between Two Binary Trees WhiteBoard Solution](/assets/common-values.png)
 
 
