@@ -3,6 +3,8 @@ package hashtable;
 import tree.BinaryTree;
 import tree.Node;
 
+import java.util.ArrayList;
+
 public class TreeIntersection {
 
     public Integer[] treeIntersection(BinaryTree tree1, BinaryTree tree2) {
@@ -10,7 +12,7 @@ public class TreeIntersection {
         treeTraversal(tree1.root, seenValuesTable);
         treeTraversal(tree2.root, seenValuesTable);
 
-
+        ArrayList<Integer> result = new ArrayList<>();
         for (int i = 0; i < seenValuesTable.hashtable.length; i++) {
             while(seenValuesTable.hashtable[i].)
         }
