@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 public class TreeIntersection {
 
-    public Integer[] treeIntersection(BinaryTree tree1, BinaryTree tree2) {
+    public static Integer[] treeIntersection(BinaryTree tree1, BinaryTree tree2) {
         Hashtable<Integer, Integer> seenValuesTable = new Hashtable<>();
         treeTraversal(tree1.root, seenValuesTable);
         treeTraversal(tree2.root, seenValuesTable);
@@ -18,7 +18,7 @@ public class TreeIntersection {
         }
     }
 
-    public void treeTraversal(Node currentNode, Hashtable<Integer, Integer> seenValuesTable) {
+    public static void treeTraversal(Node currentNode, Hashtable<Integer, Integer> seenValuesTable) {
         if (currentNode == null) {
             return;
         }
