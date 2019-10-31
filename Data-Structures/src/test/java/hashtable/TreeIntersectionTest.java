@@ -17,6 +17,7 @@ public class TreeIntersectionTest {
         tree2 = new BinaryTree();
     }
 
+    // Testing for normal case
     @Test
     public void testTreeIntersectionForNormalCaseOfTwoTreesHavingDuplicateValues() {
         tree1.root.value = 150;             //                          150
@@ -43,7 +44,15 @@ public class TreeIntersectionTest {
         tree1.root.right.right.left.value = 4;
         tree1.root.right.right.right.value = 500;
 
-        Integer[] result = treeIntersection(tree1, tree2).;
-        assertArrayEquals(new Integer[]{150,100,75,160,125,175,250,200,})
+        Integer[] result = treeIntersection(tree1, tree2);
+        assertArrayEquals(new Integer[]{100,160,125,175,200,350,500}, result);
+    }
+
+    // Testing for empty tree
+    @Test
+    public void testTreeIntersectionForEmptyTrees() {
+        Integer[] result = treeIntersection(tree1, tree2);
+
+        assertArrayEquals(new Integer[]{}, result);
     }
 }
