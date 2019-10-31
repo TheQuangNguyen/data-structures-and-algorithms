@@ -21,6 +21,7 @@ public class LeftJoin {
                 leftJoinResult[i][1] = entry.getValue();
                 leftJoinResult[i][2] = null;
             }
+            i++;
         }
         return leftJoinResult;
     }
