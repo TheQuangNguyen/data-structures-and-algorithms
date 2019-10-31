@@ -420,4 +420,18 @@ A solution would be to have a hash table that keep track of all the values seen 
 
 ![Common Values Between Two Binary Trees WhiteBoard Solution](/assets/common-values.png)
 
+## Left Join 
+
+### Problem Domain 
+
+Write a function that LEFT JOIN two hashmaps into a single 2d array. The first parameter is a hashmap that has word strings as keys, and a synonym of the key as values. The second parameter is a hashmap that has word strings as keys, and antonyms of the key as values. LEFT JOIN means all the values in the first hashmap are returned, and if values exist in the “right” hashmap, they are appended to the result row. If no values exist in the right hashmap, then some flavor of `NULL` should be appended to the result row.
+
+### Approach & Efficiency
+
+My solution involves going through each entry of the synonym hashmap and check its keys against the antonym hashmap. Since left join means that all of the entries from the synonym table will be in the result array but not all of the entries from the antonym table will be in the result. Therefore we would check the keys of the synonym table against the antonym and if the key exists in both, then we include both values from both table in the resulting array. Otherwise, include only the value from the synonym table and have null as the value of the antonym table for that key. This solution would involves only iterate through each entry in the synonym table which has a time complexity of `O(n)` where n is the number of entries of synonym table. Space complexity would be `O(n)` also since we are storing the same amount of entries in the resulting array as there are in the synonym table. 
+
+### Solution
+
+![Left Join Two HashMap Solution](/assets/left-join.png)
+
 
