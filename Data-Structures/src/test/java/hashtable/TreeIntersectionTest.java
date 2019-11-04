@@ -43,7 +43,7 @@ public class TreeIntersectionTest {
         tree1.root.right.right.left.value = 4;
         tree1.root.right.right.right.value = 500;
 
-        Integer[] result = treeIntersection(tree1, tree2).;
-        assertArrayEquals(new Integer[]{150,100,75,160,125,175,250,200,})
+        Integer[] result = treeIntersection(tree1, tree2);
+        assertArrayEquals(new Integer[]{150,100,75,160,125,175,250,200,}, result);
     }
 }
