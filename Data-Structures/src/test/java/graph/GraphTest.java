@@ -57,7 +57,7 @@ public class GraphTest {
 
         // node1 points to node2 but node2 does not point to node1
         assertTrue(edgeList1.contains(edge));
-        assertFalse(edgeList2.contains(edge));
+        assertNull(edgeList2);
         assertEquals(node2, edge.getNode());
     }
 
