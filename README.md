@@ -21,6 +21,7 @@ This repo contains common algorithms problems and my solutions to those problems
 15. [Find Maximum Value in Binary Tree](#find-maximum-value-in-binary-tree)
 16. [Hash Table](#hash-table)
 17. [Repeated Word](#repeated-word)
+18. [Graphs](#Graphs)
 
 
 ## Reverse an Array
@@ -434,4 +435,36 @@ My solution involves going through each entry of the synonym hashmap and check i
 
 ![Left Join Two HashMap Solution](/assets/left-join.png)
 
+## Graphs
 
+### Challenge
+
+Implement your own Graph. The graph should be represented as an adjacency list, and should include the following methods:
+
+1. `AddNode()`
+    * Adds a new node to the graph
+    * Takes in the value of that node
+    * Returns the added node
+2. `AddEdge()`
+    * Adds a new edge between two nodes in the graph
+    * Include the ability to have a “weight”
+    * Takes in the two nodes to be connected by the edge
+        * Both nodes should already be in the Graph
+3. `GetNodes()`
+    * Returns all of the nodes in the graph as a collection (set, list, or similar)
+4. `GetNeighbors()`
+    * Returns a collection of nodes connected to the given node
+    * Takes in a given node
+    * Include the weight of the connection in the returned collection
+5. `Size()`
+    * Returns the total number of nodes in the graph
+
+### Approach & Efficiency 
+
+The overall structure of the graph would be to have the graph class holds a set of nodes and within those nodes, each of them have their list of edges that indicate which nodes they point to. And so we would have a Node class that holds a value and a list of type Edge and the Edge class would holds the weight of the connection and what Node it points to. 
+
+* `Node<T> addNode(T value)`: create a node with the input value and add that node to the set of nodes in the graph class and return the created node. 
+* `Edge<T> addEdge(Node node1, Node node2, (optional) int weight)`: create a new edge object that points to node2 and add that edge object to the list of edges in node1.
+* `Set<Node<T>> getNodes()` : just return the set of nodes in the graph class.
+* `List<Edge<T>> getNeighbors(Node node)`: return the list of edges in the node object
+* `int size()`: return the size of the set of nodes in the graph class.
