@@ -8,7 +8,7 @@ import java.util.NoSuchElementException;
 
 public class Hashtable<K, V> {
 
-    protected LinkedList<Entry<K, V>>[] hashtable;
+    public LinkedList<Entry<K, V>>[] hashtable;
     private static final double DEFAULT_LOAD_FACTOR = 0.75;
     private static final int DEFAULT_INITIAL_CAPACITY = 5;
     private static final int HASH_PRIME_NUMBER = 599;
