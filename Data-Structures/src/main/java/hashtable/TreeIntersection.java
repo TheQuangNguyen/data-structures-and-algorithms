@@ -2,10 +2,10 @@ package hashtable;
 
 import tree.BinaryTree;
 import tree.Node;
-import java.util.Hashtable;
 
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Hashtable;
 
 public class TreeIntersection {
 
