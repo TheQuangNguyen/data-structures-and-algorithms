@@ -21,6 +21,9 @@ public class Queue<T> {
         }
     }
 
+    // enqueue a node instead of a value
+
+
     // Define a method called dequeue that does not take any argument,
     // removes the node from the front of the queue, and returns the node’s value.
     public T dequeue() {
