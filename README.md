@@ -22,6 +22,7 @@ This repo contains common algorithms problems and my solutions to those problems
 16. [Hash Table](#hash-table)
 17. [Repeated Word](#repeated-word)
 18. [Graphs](#Graphs)
+19. [Breadth-First Traversal Graph](breadth-first-traversal-graph)
 
 
 ## Reverse an Array
@@ -468,3 +469,19 @@ The overall structure of the graph would be to have the graph class holds a set 
 * `Set<Node<T>> getNodes()` : just return the set of nodes in the graph class.
 * `List<Edge<T>> getNeighbors(Node node)`: return the list of edges in the node object
 * `int size()`: return the size of the set of nodes in the graph class.
+
+## Breadth First Traversal Graph
+
+### Challenge
+
+Implement a breadth-first traversal on a graph. Extend your graph object with a breadth-first traversal method that accepts a starting node. Without utilizing any of the built-in methods available to your language, return a collection of nodes in the order they were visited. Display the collection.
+
+### Approach & Efficiency
+
+Similar to how we do breadth-first traversal on a tree, we use similar method to traverse a graph. This solution utilize a queue to keep track of which nodes to visit next and also a set to keep track which nodes already visited. Since nodes in graph can connect in ways that if we dont keep track of the ones we already visited, we can end up traversing in an endless cycle. And so at every node we visit, we would add all of its neighbor nodes to the back of the queue and also to the set. Then we just dequeue whichever node is in the front of queue and continue to visit the next one. 
+
+This solution would take `O(n)` time since there is a chance that we will visit every nodes. Space-wise, it would take `O(n)` since we are storing the nodes in the set and also temporarily in the queue. 
+
+### Solution
+
+![breadth-first traversal on a graph](/assets/breadth-first-graph.PNG)

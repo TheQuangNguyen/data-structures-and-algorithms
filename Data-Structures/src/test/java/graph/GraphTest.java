@@ -182,4 +182,93 @@ public class GraphTest {
         graph.addEdge(node3, node1);
     }
 
+    ///////////////////////////////////// Breadth First Traversal Test //////////////////////////////////////////////////
+
+    // Test for normal case like the example in the challenge description
+    @Test
+    public void testBreadthFirstNormalCaseWhereMostNodesAreConnectedBiDirectionalToEachOther() {
+        Node pandora = graph.addNode("Pandora");
+        Node arendelle = graph.addNode("Arendelle");
+        Node metroville = graph.addNode("Metroville");
+        Node monstropolis = graph.addNode("Monstropolis");
+        Node narnia = graph.addNode("Narnia");
+        Node naboo = graph.addNode("Naboo");
+
+        graph.addEdge(pandora, arendelle);
+        graph.addEdge(arendelle, pandora);
+        graph.addEdge(arendelle, metroville);
+        graph.addEdge(arendelle, monstropolis);
+        graph.addEdge(metroville, arendelle);
+        graph.addEdge(metroville, narnia);
+        graph.addEdge(metroville, naboo);
+        graph.addEdge(metroville, monstropolis);
+        graph.addEdge(monstropolis, arendelle);
+        graph.addEdge(monstropolis, metroville);
+        graph.addEdge(monstropolis, naboo);
+        graph.addEdge(naboo, narnia);
+        graph.addEdge(naboo, metroville);
+        graph.addEdge(naboo, monstropolis);
+        graph.addEdge(narnia, metroville);
+        graph.addEdge(narnia, naboo);
+
+        String result = graph.breadthFirstTraversal(naboo);
+        assertEquals("Naboo, Narnia, Metroville, Monstropolis, Arendelle, Pandora", result);
+    }
+
+    // test for like the last case but narnia is not connect to anyone
+    @Test
+    public void testBreadthFirstWhereThereIsIsland() {
+        Node pandora = graph.addNode("Pandora");
+        Node arendelle = graph.addNode("Arendelle");
+        Node metroville = graph.addNode("Metroville");
+        Node monstropolis = graph.addNode("Monstropolis");
+        Node narnia = graph.addNode("Narnia");
+        Node naboo = graph.addNode("Naboo");
+
+        graph.addEdge(pandora, arendelle);
+        graph.addEdge(arendelle, pandora);
+        graph.addEdge(arendelle, metroville);
+        graph.addEdge(arendelle, monstropolis);
+        graph.addEdge(metroville, arendelle);
+        graph.addEdge(metroville, naboo);
+        graph.addEdge(metroville, monstropolis);
+        graph.addEdge(monstropolis, arendelle);
+        graph.addEdge(monstropolis, metroville);
+        graph.addEdge(monstropolis, naboo);
+        graph.addEdge(naboo, metroville);
+        graph.addEdge(naboo, monstropolis);
+
+        String result = graph.breadthFirstTraversal(naboo);
+        assertEquals("Naboo, Metroville, Monstropolis, Arendelle, Pandora", result);
+    }
+
+    // test for when edge between pandora nd arendelle is uni-directional meaning pandora only points to arendelle but arendelle does not point to pandora
+    @Test
+    public void testBreadthFirstUniDirectionalEdge() {
+        Node pandora = graph.addNode("Pandora");
+        Node arendelle = graph.addNode("Arendelle");
+        Node metroville = graph.addNode("Metroville");
+        Node monstropolis = graph.addNode("Monstropolis");
+        Node narnia = graph.addNode("Narnia");
+        Node naboo = graph.addNode("Naboo");
+
+        graph.addEdge(pandora, arendelle);
+        graph.addEdge(arendelle, metroville);
+        graph.addEdge(arendelle, monstropolis);
+        graph.addEdge(metroville, arendelle);
+        graph.addEdge(metroville, narnia);
+        graph.addEdge(metroville, naboo);
+        graph.addEdge(metroville, monstropolis);
+        graph.addEdge(monstropolis, arendelle);
+        graph.addEdge(monstropolis, metroville);
+        graph.addEdge(monstropolis, naboo);
+        graph.addEdge(naboo, narnia);
+        graph.addEdge(naboo, metroville);
+        graph.addEdge(naboo, monstropolis);
+        graph.addEdge(narnia, metroville);
+        graph.addEdge(narnia, naboo);
+
+        String result = graph.breadthFirstTraversal(naboo);
+        assertEquals("Naboo, Narnia, Metroville, Monstropolis, Arendelle", result);
+    }
 }
