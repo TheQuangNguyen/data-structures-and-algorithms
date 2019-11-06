@@ -23,6 +23,7 @@ This repo contains common algorithms problems and my solutions to those problems
 17. [Repeated Word](#repeated-word)
 18. [Graphs](#Graphs)
 19. [Breadth-First Traversal Graph](breadth-first-traversal-graph)
+20. [Trip Cost](trip-cost)
 
 
 ## Reverse an Array
@@ -485,3 +486,19 @@ This solution would take `O(n)` time since there is a chance that we will visit 
 ### Solution
 
 ![breadth-first traversal on a graph](/assets/breadth-first-graph.PNG)
+
+## Trip Cost
+
+### Challenge
+
+Write a function which takes in a graph, and an array of city names. Return whether or not the full trip is possible with direct flights and how much it would cost. 
+
+### Approach & Efficiency 
+
+The general approach is at each city, check whether or not the next city on the itinerary is a neighboring city of the current city. In other words, check if there is a direct connection between the current city and the next city on the list to travel to. And so starting from the first city on the itinerary, checks each of its neighbor if they are the next city to travel to. If one of the neighbor is that city, then add the cost of travel to the total and change the current city to the next city. If none of the neighbors are the next city, then return -1 right away since we know that there is no direct flights possible. Continue adding up the cost until the last city is reached in which return the total cost at the end. 
+
+This solution would takes `O(n)` where n is the total number of cities in the case of the itinerary contains all the cities in the graph. Space-wise, it would be `O(1)` since we are only storing the total cost and the index to traverse the itinerary array. 
+
+### Solution 
+
+![Trip Cost Whiteboard Solution](/assets/trip-cost.png)
