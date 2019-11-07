@@ -5,6 +5,7 @@ import org.junit.Test;
 
 import java.util.List;
 import java.util.Set;
+import java.util.StringJoiner;
 
 import static org.junit.Assert.*;
 
@@ -270,5 +271,172 @@ public class GraphTest {
 
         String result = graph.breadthFirstTraversal(naboo);
         assertEquals("Naboo, Narnia, Metroville, Monstropolis, Arendelle", result);
+    }
+
+    ///////////////////////////////////// Depth First Traversal Test //////////////////////////////////////////////////
+
+    // test for normal case where nodes are connected to each other in various ways
+    @Test
+    public void testDepthFirstTraversalNormalCase() {
+        Node<String> A = graph.addNode("A");
+        Node<String> B = graph.addNode("B");
+        Node<String> C = graph.addNode("C");
+        Node<String> D = graph.addNode("D");
+        Node<String> E = graph.addNode("E");
+        Node<String> F = graph.addNode("F");
+        Node<String> G = graph.addNode("G");
+        Node<String> H = graph.addNode("H");
+
+        graph.addEdge(A, B);
+        graph.addEdge(A, D);
+        graph.addEdge(B, A);
+        graph.addEdge(B, C);
+        graph.addEdge(B, D);
+        graph.addEdge(C, B);
+        graph.addEdge(C, G);
+        graph.addEdge(D, A);
+        graph.addEdge(D, B);
+        graph.addEdge(D, E);
+        graph.addEdge(D, F);
+        graph.addEdge(D, H);
+        graph.addEdge(E, D);
+        graph.addEdge(F, D);
+        graph.addEdge(F, H);
+        graph.addEdge(H, D);
+        graph.addEdge(H, F);
+
+        List<Node<String>> result = graph.depthFirstTraversal(A);
+        StringJoiner actual = new StringJoiner(", ");
+        for(Node<String> node : result) {
+            actual.add(node.getValue());
+        }
+
+        assertEquals("A, D, H, F, E, B, C, G", actual.toString());
+    }
+
+    // test when there is an island. H would be the island
+    @Test
+    public void testDepthFirstTraversalWhenThereIsAnIslandNode() {
+        Node<String> A = graph.addNode("A");
+        Node<String> B = graph.addNode("B");
+        Node<String> C = graph.addNode("C");
+        Node<String> D = graph.addNode("D");
+        Node<String> E = graph.addNode("E");
+        Node<String> F = graph.addNode("F");
+        Node<String> G = graph.addNode("G");
+        Node<String> H = graph.addNode("H");
+
+        graph.addEdge(A, B);
+        graph.addEdge(A, D);
+        graph.addEdge(B, A);
+        graph.addEdge(B, C);
+        graph.addEdge(B, D);
+        graph.addEdge(C, B);
+        graph.addEdge(C, G);
+        graph.addEdge(D, A);
+        graph.addEdge(D, B);
+        graph.addEdge(D, E);
+        graph.addEdge(D, F);
+        graph.addEdge(E, D);
+        graph.addEdge(F, D);
+
+        List<Node<String>> result = graph.depthFirstTraversal(A);
+        StringJoiner actual = new StringJoiner(", ");
+        for(Node<String> node : result) {
+            actual.add(node.getValue());
+        }
+
+        assertEquals("A, D, F, E, B, C, G", actual.toString());
+    }
+
+    // test when E is connected to H instead of D
+    @Test
+    public void testDepthFirstTraversalForTwoPathsThatAreEqualDepth() {
+        Node<String> A = graph.addNode("A");
+        Node<String> B = graph.addNode("B");
+        Node<String> C = graph.addNode("C");
+        Node<String> D = graph.addNode("D");
+        Node<String> E = graph.addNode("E");
+        Node<String> F = graph.addNode("F");
+        Node<String> G = graph.addNode("G");
+        Node<String> H = graph.addNode("H");
+
+        graph.addEdge(A, B);
+        graph.addEdge(A, D);
+        graph.addEdge(B, A);
+        graph.addEdge(B, C);
+        graph.addEdge(B, D);
+        graph.addEdge(C, B);
+        graph.addEdge(C, G);
+        graph.addEdge(D, A);
+        graph.addEdge(D, B);
+        graph.addEdge(D, F);
+        graph.addEdge(D, H);
+        graph.addEdge(E, H);
+        graph.addEdge(F, D);
+        graph.addEdge(F, H);
+        graph.addEdge(H, D);
+        graph.addEdge(H, F);
+        graph.addEdge(H, E);
+
+        List<Node<String>> result = graph.depthFirstTraversal(A);
+        StringJoiner actual = new StringJoiner(", ");
+        for(Node<String> node : result) {
+            actual.add(node.getValue());
+        }
+
+        assertEquals("A, D, H, E, F, B, C, G", actual.toString());
+    }
+
+    // Test when the graph is secretly a linked list
+    @Test
+    public void testDepthFirstTraversalForGraphThatIsLinkedList() {
+        Node<String> A = graph.addNode("A");
+        Node<String> B = graph.addNode("B");
+        Node<String> C = graph.addNode("C");
+        Node<String> D = graph.addNode("D");
+        Node<String> E = graph.addNode("E");
+        Node<String> F = graph.addNode("F");
+        Node<String> G = graph.addNode("G");
+        Node<String> H = graph.addNode("H");
+
+        graph.addEdge(A, B);
+        graph.addEdge(B, C);
+        graph.addEdge(C, D);
+        graph.addEdge(D, E);
+        graph.addEdge(E, F);
+        graph.addEdge(F, G);
+        graph.addEdge(G, H);
+
+        List<Node<String>> result = graph.depthFirstTraversal(A);
+        StringJoiner actual = new StringJoiner(", ");
+        for(Node<String> node : result) {
+            actual.add(node.getValue());
+        }
+
+        assertEquals("A, B, C, D, E, F, G, H", actual.toString());
+    }
+
+    // Test when every letters are connect to A and nothing else
+    @Test
+    public void testDepthFirstTraversalForGraphOfSingleLevel() {
+        Node<String> A = graph.addNode("A");
+        Node<String> B = graph.addNode("B");
+        Node<String> C = graph.addNode("C");
+        Node<String> D = graph.addNode("D");
+        Node<String> E = graph.addNode("E");
+
+        graph.addEdge(A, B);
+        graph.addEdge(A, C);
+        graph.addEdge(A, D);
+        graph.addEdge(A, E);
+
+        List<Node<String>> result = graph.depthFirstTraversal(A);
+        StringJoiner actual = new StringJoiner(", ");
+        for(Node<String> node : result) {
+            actual.add(node.getValue());
+        }
+
+        assertEquals("A, E, D, C, B", actual.toString());
     }
 }
