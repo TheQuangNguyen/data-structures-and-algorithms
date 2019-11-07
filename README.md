@@ -24,6 +24,7 @@ This repo contains common algorithms problems and my solutions to those problems
 18. [Graphs](#Graphs)
 19. [Breadth-First Traversal Graph](breadth-first-traversal-graph)
 20. [Trip Cost](trip-cost)
+21. [Depth First Traversal On Graph](#depth-first-traversal-on-graph)
 
 
 ## Reverse an Array
@@ -502,3 +503,19 @@ This solution would takes `O(n)` where n is the total number of cities in the ca
 ### Solution 
 
 ![Trip Cost Whiteboard Solution](/assets/trip-cost.png)
+
+## Depth First Traversal On Graph
+
+### Challenge
+
+Create a function that accepts an adjacency list as a graph and conducts a depth first traversal. Return a collectio of nodes in their pre-order depth-first traversal order.
+
+### Approach & Efficiency
+
+Similar to how we did breadth-first traversal on a graph, instead of utilizing a queue to keep track of which to nodes to visit next, we will use a stack instead. Essentially, at every node that we visit, we first would put the node onto a list that would be our return collection. Then we would put all of its neighbors onto a stack and also a set that will keep track of which nodes we already visited. At the next iteration, we would just pop a single node off of the stack and that would be our current node. Then we would just repeat the process until the stack is empty in which we traverse every nodes that can be reached in the graph. 
+
+This solution will takes `O(n)` time where n is the total number of nodes in the graph since we might have to traverse through all of the nodes. Space-wise, it would be `O(n)` as well in the case of where the graph is secretly a linked list and we would have to put all of the nodes onto the stack before we start to pop nodes off. 
+
+### Solution 
+
+![depth-first traversal on a graph](/assets/depth-first.png)

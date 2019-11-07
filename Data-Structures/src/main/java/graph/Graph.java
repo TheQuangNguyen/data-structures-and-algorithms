@@ -70,10 +70,10 @@ public class Graph<T> {
 
     // accept a starting node and perform a breadth-first traversal on the graph
     // return a collection of the nodes in the order they were visited
-    public String breadthFirstTraversal(Node start) {
+    public String breadthFirstTraversal(Node<T> start) {
         HashSet<Node<T>> visited = new HashSet<>();
         Queue<Node<T>> toVisit = new Queue<>();
-        LinkedList<Node<T>> ans = new LinkedList<>();
+        List<Node<T>> ans = new LinkedList<>();
         // StringJoiner is for testing
         StringJoiner result = new StringJoiner(", ");
 
@@ -100,5 +100,30 @@ public class Graph<T> {
 
         // For testing purpose, return a string that shows the nodes in order that they were visited
         return result.toString();
+    }
+
+    // accepts an adjacency list as a graph and conducts a depth first traversal
+    // return a collection of nodes in their pre-order depth-first traversal order
+    public List<Node<T>> depthFirstTraversal(Node<T> start) {
+        HashSet<Node<T>> visited = new HashSet<>();
+        Stack<Node<T>> toVisit = new Stack<>();
+        List<Node<T>> ans = new LinkedList<>();
+
+        toVisit.add(start);
+        visited.add(start);
+
+        while (!toVisit.isEmpty()) {
+            Node<T> currentNode = toVisit.pop();
+            ans.add(currentNode);
+
+            for(Edge<T> neighbor: currentNode.getNeighbors()) {
+                Node neighborNode = neighbor.getNode();
+                if (!visited.contains(neighborNode)) {
+                    toVisit.push(neighborNode);
+                    visited.add(neighborNode);
+                }
+            }
+        }
+        return ans;
     }
 }
